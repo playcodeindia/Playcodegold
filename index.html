@@ -11,7 +11,7 @@
     <style>
         /* ========== PROFESSIONAL GOOGLE MATERIAL 3 THEME (DARK MODE) ========== */
         ::-webkit-scrollbar { display: none; width: 0; background: transparent; }
-        * { -ms-overflow-style: none; scrollbar-width: none; margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { -ms-overflow-style: none; scrollbar-width: none; margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
         :root {
             --md-sys-color-primary: #A8C7FA;
@@ -34,9 +34,26 @@
             --transition-standard: 200ms cubic-bezier(0.2, 0, 0, 1);
         }
 
-        body { font-family: var(--font-family-display); background-color: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); min-height: 100vh; overflow: hidden; }
+        /* MOBILE OPTIMIZATION: FIXED BODY & 100dvh PREVENTS KEYBOARD OVERLAP */
+        html, body { 
+            font-family: var(--font-family-display); 
+            background-color: var(--md-sys-color-surface); 
+            color: var(--md-sys-color-on-surface); 
+            height: 100%; 
+            height: 100dvh; 
+            width: 100%;
+            position: fixed; 
+            overflow: hidden; 
+            overscroll-behavior-y: none;
+        }
         
-        .screen { display: none; width: 100%; height: 100vh; flex-direction: column; animation: fadeIn 0.3s ease; }
+        .screen { 
+            display: none; 
+            position: absolute; 
+            top: 0; bottom: 0; left: 0; right: 0; 
+            flex-direction: column; 
+            animation: fadeIn 0.3s ease; 
+        }
         .screen.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -52,69 +69,72 @@
         .form-control:focus { outline: none; border: 2px solid var(--md-sys-color-primary); padding: 15px; }
 
         /* ===== LOGIN SCREEN ===== */
-        .login-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
-        .auth-box { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-xl); padding: 40px 32px; width: 100%; max-width: 440px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); text-align: center; }
-        .logo-icon { width: 48px; height: 48px; background: var(--md-sys-color-surface-container-high); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--md-sys-color-primary); margin-bottom: 24px; }
+        .login-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+        .auth-box { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-xl); padding: 32px 24px; width: 100%; max-width: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); text-align: center; }
+        .logo-icon { width: 56px; height: 56px; background: var(--md-sys-color-surface-container-high); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; color: var(--md-sys-color-primary); margin-bottom: 20px; }
         
         /* ===== LOADER ===== */
         .loader-screen { justify-content: center; align-items: center; background: var(--md-sys-color-surface); z-index: 100; position: absolute; top:0; left:0; width:100%; height:100%; }
-        .pulse-dot { width: 40px; height: 40px; border: 4px solid var(--md-sys-color-surface-container-high); border-top: 4px solid var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
-        #loaderText { font-size: 18px; color: var(--md-sys-color-on-surface); font-weight: 500; }
+        .pulse-dot { width: 48px; height: 48px; border: 4px solid var(--md-sys-color-surface-container-high); border-top: 4px solid var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
+        #loaderText { font-size: 16px; color: var(--md-sys-color-on-surface); font-weight: 500; letter-spacing: 0.5px; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* ===== CHAT UI ===== */
-        .chat-header { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+        .chat-header { background: var(--md-sys-color-surface-container); padding: 12px 20px; padding-top: max(12px, env(safe-area-inset-top)); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--md-sys-color-outline-variant); z-index: 10; }
         .chat-title-area { display: flex; flex-direction: column; }
-        .chat-title { font-size: 18px; font-weight: 600; color: white; display: flex; align-items: center; gap: 8px;}
+        .chat-title { font-size: 16px; font-weight: 600; color: white; display: flex; align-items: center; gap: 8px;}
         .status-dot { width: 8px; height: 8px; background: var(--md-sys-color-success); border-radius: 50%; }
-        .chat-subtitle { font-size: 12px; color: var(--md-sys-color-outline); }
+        .chat-subtitle { font-size: 12px; color: var(--md-sys-color-outline); margin-top: 2px;}
         
-        .chat-messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; background: var(--md-sys-color-surface); }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; background: var(--md-sys-color-surface); -webkit-overflow-scrolling: touch; }
         
         /* Chat Bubbles */
-        .msg { max-width: 80%; padding: 10px 16px; border-radius: 18px; font-size: 15px; line-height: 1.4; position: relative; word-wrap: break-word; display: flex; flex-direction: column;}
-        .msg-time { font-size: 11px; color: var(--md-sys-color-outline); margin-top: 4px; display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
-        .msg-user { align-self: flex-end; background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); border-bottom-right-radius: 4px; }
-        .msg-admin { align-self: flex-start; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); border-bottom-left-radius: 4px; }
-        .msg-sender-name { font-size: 12px; font-weight: 600; color: var(--md-sys-color-primary); margin-bottom: 4px; }
+        .msg { max-width: 85%; padding: 12px 16px; font-size: 15px; line-height: 1.4; position: relative; word-wrap: break-word; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .msg-time { font-size: 11px; color: var(--md-sys-color-outline); margin-top: 6px; display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+        .msg-user { align-self: flex-end; background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); border-radius: 20px 20px 4px 20px; }
+        .msg-admin { align-self: flex-start; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); border-radius: 20px 20px 20px 4px; }
+        .msg-sender-name { font-size: 12px; font-weight: 600; color: var(--md-sys-color-primary); margin-bottom: 6px; }
         
         /* Read Receipts */
         .tick { font-size: 14px; color: var(--md-sys-color-outline); }
         .tick-read { color: #4285F4; } /* Blue for read */
 
         /* Typing Indicator with Avatar Spinner */
-        .typing-container { display: flex; gap: 12px; align-items: center; align-self: flex-start; margin-top: 8px; }
+        .typing-container { display: flex; gap: 12px; align-items: center; align-self: flex-start; margin-top: 8px; margin-bottom: 8px; }
         .avatar-wrapper { position: relative; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-primary); font-weight: 600; font-size: 14px;}
         .avatar-spinner { position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border: 2px solid transparent; border-top-color: var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
         .typing-text { font-size: 13px; color: var(--md-sys-color-on-surface-variant); font-style: italic; }
 
-        .chat-input-area { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; gap: 12px; border-top: 1px solid var(--md-sys-color-outline-variant); }
-        .chat-input { flex: 1; background: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-full); padding: 12px 20px; color: white; font-family: var(--font-family-base); font-size: 15px; }
+        /* Chat Input Area - Optimized for Mobile Keyboards */
+        .chat-input-area { background: var(--md-sys-color-surface-container); padding: 12px 16px; padding-bottom: max(16px, env(safe-area-inset-bottom)); display: flex; gap: 12px; border-top: 1px solid var(--md-sys-color-outline-variant); align-items: center; z-index: 10; }
+        .chat-input { flex: 1; background: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-full); padding: 14px 20px; color: white; font-family: var(--font-family-base); font-size: 16px; /* 16px prevents iOS auto-zoom */ transition: border-color 0.2s; }
         .chat-input:focus { outline: none; border-color: var(--md-sys-color-primary); }
-        .send-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
+        .send-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: transform 0.1s; }
         .send-btn:active { transform: scale(0.9); }
+        .send-btn .material-icons-round { font-size: 22px; margin-left: 2px; }
 
-        .system-msg { align-self: center; font-size: 12px; color: var(--md-sys-color-outline); background: var(--md-sys-color-surface-container); padding: 4px 12px; border-radius: var(--radius-full); }
+        .system-msg { align-self: center; font-size: 12px; color: var(--md-sys-color-outline); background: var(--md-sys-color-surface-container); padding: 6px 16px; border-radius: var(--radius-full); margin: 8px 0; }
 
         /* ===== ADMIN UI ===== */
-        .admin-header { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .admin-content { flex: 1; padding: 24px; overflow-y: auto; max-width: 1000px; margin: 0 auto; width: 100%; }
+        .admin-header { background: var(--md-sys-color-surface-container); padding: 16px 24px; padding-top: max(16px, env(safe-area-inset-top)); display: flex; justify-content: space-between; align-items: center; }
+        .admin-content { flex: 1; padding: 24px; padding-bottom: max(24px, env(safe-area-inset-bottom)); overflow-y: auto; max-width: 1000px; margin: 0 auto; width: 100%; -webkit-overflow-scrolling: touch; }
         .admin-actions { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
         
-        .case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 32px; }
-        .case-card { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-lg); padding: 16px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .case-card { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-xl); padding: 20px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .case-card:hover { background: var(--md-sys-color-surface-container-high); cursor: pointer; }
-        .case-info h3 { font-size: 16px; color: white; margin-bottom: 4px; }
-        .badge { font-size: 12px; padding: 2px 8px; border-radius: var(--radius-full); font-weight: 500; }
-        .badge-active { background: rgba(129, 201, 149, 0.2); color: var(--md-sys-color-success); }
-        .badge-closed { background: rgba(242, 184, 181, 0.2); color: var(--md-sys-color-error); }
+        .case-info h3 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 6px; letter-spacing: 0.5px; }
+        .badge { font-size: 11px; padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-active { background: rgba(129, 201, 149, 0.15); color: var(--md-sys-color-success); border: 1px solid rgba(129, 201, 149, 0.3); }
+        .badge-closed { background: rgba(242, 184, 181, 0.15); color: var(--md-sys-color-error); border: 1px solid rgba(242, 184, 181, 0.3); }
 
         /* ===== MODALS ===== */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .modal { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(4px); }
         .modal.show { display: flex; opacity: 1; }
-        .modal-content { background: var(--md-sys-color-surface-container); border-radius: var(--radius-xl); width: 90%; max-width: 400px; border: 1px solid var(--md-sys-color-outline-variant); padding: 24px; }
-        .modal-title { font-size: 20px; color: white; margin-bottom: 16px; }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; }
+        .modal-content { background: var(--md-sys-color-surface-container); border-radius: var(--radius-xl); width: 90%; max-width: 400px; border: 1px solid var(--md-sys-color-outline-variant); padding: 32px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.2,0,0,1); }
+        .modal.show .modal-content { transform: scale(1); }
+        .modal-title { font-size: 22px; color: white; margin-bottom: 24px; font-weight: 500; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 32px; }
     </style>
 </head>
 <body>
@@ -122,26 +142,26 @@
     <div id="loginScreen" class="screen active">
         <div class="login-container">
             <div class="auth-box">
-                <div class="logo-icon"><span class="material-icons-round" style="font-size: 32px;">support_agent</span></div>
-                <h1 style="font-size: 24px; color: white; margin-bottom: 8px;">PlayCode Support</h1>
+                <div class="logo-icon"><span class="material-icons-round" style="font-size: 36px;">support_agent</span></div>
+                <h1 style="font-size: 24px; font-weight: 500; color: white; margin-bottom: 8px;">PlayCode Support</h1>
                 <p style="color: var(--md-sys-color-outline); margin-bottom: 32px; font-size: 14px;">Workspace Connect</p>
                 
-                <div style="margin-bottom: 16px; text-align: left;">
-                    <label style="display: block; font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">Case ID or Admin ID</label>
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <label style="display: block; font-size: 13px; font-weight: 500; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px; letter-spacing: 0.5px;">CASE ID OR ADMIN ID</label>
                     <input type="text" id="loginId" class="form-control" placeholder="Enter ID to connect" autocomplete="off">
                 </div>
-                <div style="margin-bottom: 24px; text-align: left;" id="loginNameGroup">
-                    <label style="display: block; font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">Your Full Name</label>
-                    <input type="text" id="loginName" class="form-control" placeholder="E.g. Sarim Khan" autocomplete="off">
+                <div style="margin-bottom: 32px; text-align: left;" id="loginNameGroup">
+                    <label style="display: block; font-size: 13px; font-weight: 500; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px; letter-spacing: 0.5px;">YOUR FULL NAME</label>
+                    <input type="text" id="loginName" class="form-control" placeholder="E.g. Samarth Dwivedi" autocomplete="off">
                 </div>
-                <button class="btn btn-primary btn-block" onclick="window.handleLogin()">Connect to Support</button>
+                <button class="btn btn-primary btn-block" onclick="window.handleLogin()" style="font-size: 15px; height: 52px;">Connect to Support</button>
             </div>
         </div>
     </div>
 
     <div id="loaderScreen" class="screen loader-screen">
         <div class="pulse-dot"></div>
-        <div id="loaderText">verify</div>
+        <div id="loaderText">Verify</div>
     </div>
 
     <div id="chatScreen" class="screen">
@@ -161,14 +181,14 @@
             </div>
         
         <div class="chat-input-area" id="chatInputArea">
-            <input type="text" id="msgInput" class="chat-input" placeholder="Type a message..." onkeypress="window.checkEnter(event)">
+            <input type="text" id="msgInput" class="chat-input" placeholder="Type a message..." autocomplete="off" onkeypress="window.checkEnter(event)">
             <button class="send-btn" id="sendBtn" onclick="window.sendMessage()"><span class="material-icons-round">send</span></button>
         </div>
     </div>
 
     <div id="adminScreen" class="screen">
         <div class="admin-header">
-            <h2 style="color: white; font-size: 20px;">Admin Workspace</h2>
+            <h2 style="color: white; font-size: 20px; font-weight: 500;">Admin Workspace</h2>
             <button class="btn btn-secondary" style="min-height: 36px; padding: 0 16px; font-size: 13px;" onclick="window.logout()">Sign Out</button>
         </div>
         <div class="admin-content">
@@ -177,10 +197,10 @@
                 <button class="btn btn-secondary" onclick="window.showJoinModal()"><span class="material-icons-round">login</span> Join Any Case</button>
             </div>
 
-            <h2 style="color: white; font-size: 18px; margin-bottom: 16px;">Active Cases</h2>
+            <h2 style="color: white; font-size: 18px; font-weight: 500; margin-bottom: 16px;">Active Cases</h2>
             <div class="case-grid" id="activeCasesGrid"></div>
 
-            <h2 style="color: white; font-size: 18px; margin-bottom: 16px; margin-top: 16px;">Closed Cases</h2>
+            <h2 style="color: white; font-size: 18px; font-weight: 500; margin-bottom: 16px; margin-top: 24px;">Closed Cases</h2>
             <div class="case-grid" id="closedCasesGrid"></div>
         </div>
     </div>
@@ -199,7 +219,7 @@
     <div id="joinModal" class="modal">
         <div class="modal-content">
             <h2 class="modal-title">Join Case</h2>
-            <input type="text" id="joinCaseId" class="form-control" placeholder="Enter Case ID" style="margin-bottom: 16px;">
+            <input type="text" id="joinCaseId" class="form-control" placeholder="Enter Case ID" style="margin-bottom: 20px;">
             <input type="text" id="adminDisplayName" class="form-control" placeholder="Your Display Name (e.g. Agent Som)">
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="window.closeModal('joinModal')">Cancel</button>
@@ -314,9 +334,9 @@
         function runVerificationSequence(callback) {
             showScreen('loaderScreen');
             const textEl = document.getElementById('loaderText');
-            textEl.innerText = 'verify';
-            setTimeout(() => { textEl.innerText = 'please wait'; }, 1000);
-            setTimeout(() => { textEl.innerText = 'Still Trying to verify'; }, 2500);
+            textEl.innerText = 'Verify';
+            setTimeout(() => { textEl.innerText = 'Please wait'; }, 1000);
+            setTimeout(() => { textEl.innerText = 'Still trying to verify'; }, 2500);
             setTimeout(() => { callback(); }, 4000); 
         }
 
@@ -363,7 +383,7 @@
             clearTimeout(typingTimeout);
             const msgBox = document.getElementById('chatMessages');
             
-            // Remember scroll position
+            // Remember scroll position for auto-scroll
             const isScrolledToBottom = msgBox.scrollHeight - msgBox.scrollTop <= msgBox.clientHeight + 50;
 
             let html = '<div class="system-msg">Chat connected securely.</div>';
