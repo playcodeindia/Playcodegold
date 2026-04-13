@@ -4,3690 +4,599 @@
     <link rel="icon" sizes="32x32" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>PlayCode PRO · Golden Edition</title>
-    <!-- Material Icons + Premium Google Fonts -->
+    <meta name="theme-color" content="#111114">
+    <title>PlayCode · Support Workspace</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Firebase 8.10.0 -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* ========== PREMIUM GOLDEN THEME — PLAYCODE PRO ========== */
-        /* ========== ALL ORIGINAL FEATURES PRESERVED ========== */
-        /* ========== ADDED CHAT SYSTEM ========== */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        /* ========== PROFESSIONAL GOOGLE MATERIAL 3 THEME (DARK MODE) ========== */
+        ::-webkit-scrollbar { display: none; width: 0; background: transparent; }
+        * { -ms-overflow-style: none; scrollbar-width: none; margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         :root {
-            /* GOLDEN COLOR PALETTE */
-            --gold-primary: #D4AF37;
-            --gold-rich: #C5A028;
-            --gold-light: #F5E7B2;
-            --gold-pale: #E9D49C;
-            --gold-deep: #AA8C2C;
-            --gold-gradient: linear-gradient(145deg, #D4AF37, #B8860B);
+            --md-sys-color-primary: #A8C7FA;
+            --md-sys-color-on-primary: #062E6F;
+            --md-sys-color-primary-container: #0842A0;
+            --md-sys-color-on-primary-container: #D3E3FD;
+            --md-sys-color-surface: #111114; 
+            --md-sys-color-surface-container: #1E1F22; 
+            --md-sys-color-surface-container-high: #2B2D31;
+            --md-sys-color-on-surface: #E2E2E2;
+            --md-sys-color-on-surface-variant: #C4C7C5;
+            --md-sys-color-outline: #8E918F;
+            --md-sys-color-outline-variant: #444746;
+            --md-sys-color-error: #F2B8B5;
+            --md-sys-color-success: #81C995;
             
-            /* SURFACE COLORS */
-            --surface-dark: #1A170F;
-            --surface-mid: #2C271C;
-            --surface-light: #3F3829;
-            --surface-card: #1E1B13;
-            --surface-hover: #2F2A1F;
-            --background-deep: #12100C;
-            
-            /* TEXT COLORS */
-            --text-premium: #FCF7E6;
-            --text-gold: #F5D97B;
-            --text-muted: #B8A77A;
-            --text-light: #FFF5E6;
-            
-            /* BORDERS & SHADOWS */
-            --border-gold: rgba(212,175,55,0.4);
-            --border-gold-hover: rgba(212,175,55,0.7);
-            --shadow-gold: 0 8px 32px rgba(212,175,55,0.25);
-            
-            /* STATUS COLORS */
-            --success-color: #2D9C6B;
-            --error-color: #CF6679;
-            --warning-color: #E6B422;
-            --info-color: #7AC7FF;
-            
-            /* FONTS */
-            --font-display: 'Playfair Display', 'Times New Roman', serif;
-            --font-base: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* SPACING */
-            --space-1: 0.25rem;
-            --space-2: 0.5rem;
-            --space-3: 0.75rem;
-            --space-4: 1rem;
-            --space-5: 1.25rem;
-            --space-6: 1.5rem;
-            --space-8: 2rem;
-            --space-10: 2.5rem;
-            --space-12: 3rem;
-            --space-16: 4rem;
-            
-            /* TEXT SIZES */
-            --text-xs: 0.75rem;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.25rem;
-            --text-2xl: 1.5rem;
-            --text-3xl: 1.875rem;
-            
-            /* FONT WEIGHTS */
-            --font-light: 300;
-            --font-regular: 400;
-            --font-medium: 500;
-            --font-semibold: 600;
-            --font-bold: 700;
-            --font-black: 900;
-            
-            /* RADII */
-            --radius-xs: 0.375rem;
-            --radius-sm: 0.5rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.25rem;
-            --radius-2xl: 1.75rem;
-            --radius-full: 9999px;
-            
-            /* SHADOWS */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.7), 0 1px 2px rgba(0,0,0,0.8);
-            --shadow-md: 0 4px 8px rgba(0,0,0,0.7), 0 2px 4px rgba(0,0,0,0.6);
-            --shadow-lg: 0 8px 16px rgba(0,0,0,0.8), 0 4px 8px rgba(0,0,0,0.7);
-            --shadow-xl: 0 12px 28px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.7);
-            --shadow-2xl: 0 24px 48px rgba(0,0,0,0.95);
-            
-            /* TRANSITIONS */
-            --transition-fast: 200ms cubic-bezier(0.2, 0, 0, 1);
-            --transition-base: 350ms cubic-bezier(0.2, 0, 0, 1);
-        }
-
-        body {
-            font-family: var(--font-base);
-            background-color: var(--background-deep);
-            color: var(--text-premium);
-            line-height: 1.5;
-            min-height: 100vh;
-            letter-spacing: 0.015em;
-            opacity: 0;
-            animation: bodyFadeIn 0.8s ease forwards;
-        }
-
-        @keyframes bodyFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===== GOLDEN PLAY LOGO ===== */
-        .google-play-logo {
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle at 30% 30%, #F9E076, #B8860B);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 0 2px rgba(255,215,0,0.4), var(--shadow-md);
-            transition: all var(--transition-fast);
-        }
-
-        .google-play-logo:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px gold;
-        }
-
-        .play-triangle {
-            width: 0;
-            height: 0;
-            border-left: 12px solid #0A0804;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            margin-left: 4px;
-            filter: drop-shadow(0 1px 2px black);
-        }
-
-        /* ===== AUTH CONTAINER ===== */
-        .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: var(--space-4);
-            background: radial-gradient(circle at 80% 20%, #3F351F, #0A0804);
-            position: relative;
-            animation: gradientShift 15s infinite alternate;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-
-        .auth-box {
-            background: rgba(26,23,15,0.96);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-2xl);
-            padding: var(--space-8) var(--space-6);
-            width: 100%;
-            max-width: 420px;
-            box-shadow: var(--shadow-2xl), 0 0 30px rgba(212,175,55,0.2);
-            transform: translateY(0);
-            transition: all var(--transition-base);
-            animation: cardFloatIn 0.6s cubic-bezier(0.2,0,0,1);
-        }
-
-        @keyframes cardFloatIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .auth-box:hover {
-            box-shadow: 0 32px 64px rgba(212,175,55,0.3);
-            transform: translateY(-2px);
-        }
-
-        .auth-logo-text {
-            font-family: var(--font-display);
-            font-size: var(--text-2xl);
-            font-weight: var(--font-black);
-            background: linear-gradient(to right, #F5D97B, #FFF2C6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
-
-        /* ===== FORM ELEMENTS ===== */
-        .form-group {
-            margin-bottom: var(--space-6);
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: var(--space-2);
-            color: var(--text-gold);
-            font-size: var(--text-sm);
-            font-weight: var(--font-semibold);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: var(--space-4) var(--space-5);
-            background: rgba(255,255,240,0.05);
-            border: 1.5px solid var(--border-gold);
-            border-radius: var(--radius-lg);
-            font-size: var(--text-base);
-            color: var(--text-premium);
-            transition: all var(--transition-fast);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            background: rgba(0,0,0,0.7);
-            box-shadow: 0 0 0 4px rgba(212,175,55,0.2);
-            transform: scale(1.01);
-        }
-
-        .form-control::placeholder {
-            color: rgba(255,255,240,0.3);
-        }
-
-        select.form-control {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23F5D97B' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right var(--space-4) center;
-            background-size: 1.5rem;
-            appearance: none;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            padding: var(--space-4) var(--space-6);
-            height: 52px;
-            font-size: var(--text-base);
-            font-weight: var(--font-bold);
-            border-radius: 28px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            letter-spacing: 0.5px;
-            background: rgba(255,255,240,0.06);
-            color: var(--text-premium);
-            border: 1px solid var(--border-gold);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,215,0,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:active::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-            background: var(--gold-gradient);
-            border: none;
-            color: #0A0804;
-            font-weight: var(--font-black);
-            box-shadow: 0 4px 12px rgba(212,175,55,0.4);
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            background: linear-gradient(145deg, #E5C158, #D4AF37);
-            transform: scale(0.98);
-            box-shadow: 0 6px 20px gold;
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,240,0.06);
-            border: 1px solid var(--border-gold);
-            color: var(--text-gold);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(212,175,55,0.15);
-        }
-
-        .btn-danger {
-            background: var(--error-color);
-            color: #0A0804;
-        }
-
-        .btn-success {
-            background: var(--success-color);
-            color: #0A0804;
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        .btn-loading {
-            pointer-events: none;
-            opacity: 0.9;
-        }
-
-        .btn-loading .btn-text {
-            opacity: 0;
-        }
-
-        .btn-loading::before {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top-color: var(--gold-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        /* ===== LOADING OVERLAY ===== */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10,8,4,0.95);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s;
-        }
-
-        .loading-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .loading-card {
-            background: var(--surface-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 40px;
-            padding: 40px 32px;
-            max-width: 320px;
-            width: 90%;
-            text-align: center;
-            box-shadow: var(--shadow-2xl), 0 0 30px rgba(212,175,55,0.3);
-            animation: pulseGlow 2s infinite;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(212,175,55,0.3); }
-            50% { box-shadow: 0 0 40px rgba(212,175,55,0.6); }
-        }
-
-        .loading-steps {
-            margin-top: 24px;
-        }
-
-        .loading-step {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-            color: var(--text-muted);
-        }
-
-        .loading-step.active {
-            color: var(--text-premium);
-        }
-
-        .loading-step .step-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 32px;
-            background: rgba(212,175,55,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .loading-step.active .step-icon {
-            background: var(--gold-primary);
-            box-shadow: 0 0 12px gold;
-            color: #0A0804;
-        }
-
-        .loading-step.completed .step-icon {
-            background: var(--success-color);
-            box-shadow: 0 0 12px var(--success-color);
-            color: #0A0804;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--gold-primary);
-            border-radius: 50%;
-            margin: 0 auto;
-            animation: pulse 1.2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ===== DASHBOARD ===== */
-        .dashboard {
-            display: none;
-            background: var(--background-deep);
-            min-height: 100vh;
-        }
-
-        .header {
-            background: rgba(18,16,12,0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--gold-primary);
-            padding: var(--space-4) var(--space-6);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: var(--text-xl);
-            font-weight: var(--font-black);
-            background: linear-gradient(145deg, #FFF5D6, #E5C158);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* ===== USER MENU ===== */
-        .user-menu {
-            position: relative;
-        }
-
-        .user-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 44px;
-            background: var(--gold-gradient);
-            box-shadow: 0 0 0 2px rgba(255,215,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0A0804;
-            font-weight: var(--font-black);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 2px gold, 0 0 20px gold;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 52px;
-            right: 0;
-            background: var(--surface-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 20px;
-            width: 280px;
-            display: none;
-            box-shadow: var(--shadow-xl);
-            z-index: 1500;
-            animation: slideDown 0.3s cubic-bezier(0.2,0,0,1);
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .dropdown-menu.show {
-            display: block;
-        }
-
-        .dropdown-item {
-            padding: var(--space-4) var(--space-6);
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            cursor: pointer;
-            border-bottom: 1px solid rgba(212,175,55,0.1);
-            color: var(--text-premium);
-            transition: all var(--transition-fast);
-        }
-
-        .dropdown-item:hover {
-            background: rgba(212,175,55,0.15);
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        /* ===== WELCOME SECTION ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-6);
-        }
-
-        .welcome-section {
-            text-align: center;
-            padding: var(--space-12) var(--space-6);
-            background: var(--surface-card);
-            border-radius: 32px;
-            margin-bottom: var(--space-8);
-            border: 1px solid var(--border-gold);
-            animation: fadeScale 0.8s;
-        }
-
-        @keyframes fadeScale {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .welcome-title {
-            font-size: var(--text-3xl);
-            font-family: var(--font-display);
-            font-weight: var(--font-black);
-            background: linear-gradient(to right, #F9E283, #FFF2CC);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: var(--space-4);
-        }
-
-        .welcome-subtitle {
-            color: var(--text-muted);
-            font-size: var(--text-lg);
-        }
-
-        /* ===== FEATURE CARDS ===== */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-6);
-        }
-
-        .feature-card {
-            background: var(--surface-card);
-            border: 1px solid rgba(212,175,55,0.2);
-            border-radius: 24px;
-            padding: var(--space-6);
-            transition: all 0.3s cubic-bezier(0.2,0,0,1);
-            backdrop-filter: blur(4px);
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            transform: translateY(0);
-            animation: cardReveal 0.6s backwards;
-        }
-
-        @keyframes cardReveal {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .feature-card:hover {
-            background: var(--surface-hover);
-            border-color: var(--gold-primary);
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 32px rgba(212,175,55,0.3);
-        }
-
-        .feature-card:active {
-            transform: translateY(-2px) scale(0.99);
-        }
-
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
-            background: rgba(212,175,55,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: var(--space-4);
-            color: var(--text-gold);
-            font-size: 1.75rem;
-            transition: all var(--transition-fast);
-        }
-
-        .feature-card:hover .feature-icon {
-            background: rgba(212,175,55,0.25);
-            color: var(--gold-light);
-        }
-
-        .feature-title {
-            font-size: var(--text-lg);
-            font-weight: var(--font-bold);
-            margin-bottom: var(--space-2);
-            color: var(--text-premium);
-            font-family: var(--font-display);
-        }
-
-        .feature-description {
-            color: var(--text-muted);
-            font-size: var(--text-sm);
-        }
-
-        /* ===== TABLES ===== */
-        .table-container {
-            background: var(--surface-card);
-            border-radius: 24px;
-            border: 1px solid rgba(212,175,55,0.2);
-            overflow-x: auto;
-            margin-bottom: var(--space-8);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-
-        th {
-            background: rgba(212,175,55,0.1);
-            color: var(--text-gold);
-            padding: var(--space-4) var(--space-6);
-            font-weight: var(--font-bold);
-            text-align: left;
-            font-family: var(--font-display);
-        }
-
-        td {
-            padding: var(--space-4) var(--space-6);
-            border-bottom: 1px solid rgba(212,175,55,0.1);
-            color: var(--text-premium);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover {
-            background: rgba(212,175,55,0.08);
-        }
-
-        /* ===== STATUS BADGES ===== */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 14px;
-            border-radius: 40px;
-            font-size: var(--text-xs);
-            font-weight: var(--font-bold);
-            letter-spacing: 0.3px;
-            border: 1px solid transparent;
-        }
-
-        .status-pending {
-            background: rgba(212,175,55,0.15);
-            color: var(--text-gold);
-            border-color: rgba(212,175,55,0.4);
-        }
-
-        .status-completed {
-            background: rgba(45,156,107,0.15);
-            color: #B2F2C9;
-            border-color: rgba(45,156,107,0.3);
-        }
-
-        .status-cancelled {
-            background: rgba(207,102,121,0.15);
-            color: #FFB4A2;
-            border-color: rgba(207,102,121,0.3);
-        }
+            --font-family-display: 'Google Sans', -apple-system, Roboto, sans-serif;
+            --font-family-base: 'Roboto', -apple-system, sans-serif;
+            --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px;
+            --transition-standard: 200ms cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        body { font-family: var(--font-family-display); background-color: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); min-height: 100vh; overflow: hidden; }
+        
+        .screen { display: none; width: 100%; height: 100vh; flex-direction: column; animation: fadeIn 0.3s ease; }
+        .screen.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== BUTTONS & INPUTS ===== */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 24px; min-height: 48px; font-size: 14px; font-weight: 500; border-radius: var(--radius-full); border: none; cursor: pointer; transition: all var(--transition-standard); font-family: var(--font-family-display); }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+        .btn-secondary { background: transparent; color: var(--md-sys-color-primary); border: 1px solid var(--md-sys-color-outline); }
+        .btn-danger { background: var(--md-sys-color-error); color: #601410; }
+        .btn-block { width: 100%; }
+        
+        .form-control { width: 100%; padding: 16px; background: transparent; border: 1px solid var(--md-sys-color-outline); border-radius: var(--radius-sm); font-size: 16px; color: var(--md-sys-color-on-surface); transition: all 0.2s; font-family: var(--font-family-base); }
+        .form-control:focus { outline: none; border: 2px solid var(--md-sys-color-primary); padding: 15px; }
+
+        /* ===== LOGIN SCREEN ===== */
+        .login-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .auth-box { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-xl); padding: 40px 32px; width: 100%; max-width: 440px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); text-align: center; }
+        .logo-icon { width: 48px; height: 48px; background: var(--md-sys-color-surface-container-high); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--md-sys-color-primary); margin-bottom: 24px; }
+        
+        /* ===== LOADER ===== */
+        .loader-screen { justify-content: center; align-items: center; background: var(--md-sys-color-surface); z-index: 100; position: absolute; top:0; left:0; width:100%; height:100%; }
+        .pulse-dot { width: 40px; height: 40px; border: 4px solid var(--md-sys-color-surface-container-high); border-top: 4px solid var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
+        #loaderText { font-size: 18px; color: var(--md-sys-color-on-surface); font-weight: 500; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== CHAT UI ===== */
+        .chat-header { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+        .chat-title-area { display: flex; flex-direction: column; }
+        .chat-title { font-size: 18px; font-weight: 600; color: white; display: flex; align-items: center; gap: 8px;}
+        .status-dot { width: 8px; height: 8px; background: var(--md-sys-color-success); border-radius: 50%; }
+        .chat-subtitle { font-size: 12px; color: var(--md-sys-color-outline); }
+        
+        .chat-messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; background: var(--md-sys-color-surface); }
+        
+        /* Chat Bubbles */
+        .msg { max-width: 80%; padding: 10px 16px; border-radius: 18px; font-size: 15px; line-height: 1.4; position: relative; word-wrap: break-word; display: flex; flex-direction: column;}
+        .msg-time { font-size: 11px; color: var(--md-sys-color-outline); margin-top: 4px; display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+        .msg-user { align-self: flex-end; background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); border-bottom-right-radius: 4px; }
+        .msg-admin { align-self: flex-start; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-on-surface); border-bottom-left-radius: 4px; }
+        .msg-sender-name { font-size: 12px; font-weight: 600; color: var(--md-sys-color-primary); margin-bottom: 4px; }
+        
+        /* Read Receipts */
+        .tick { font-size: 14px; color: var(--md-sys-color-outline); }
+        .tick-read { color: #4285F4; } /* Blue for read */
+
+        /* Typing Indicator with Avatar Spinner */
+        .typing-container { display: flex; gap: 12px; align-items: center; align-self: flex-start; margin-top: 8px; }
+        .avatar-wrapper { position: relative; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--md-sys-color-surface-container-high); color: var(--md-sys-color-primary); font-weight: 600; font-size: 14px;}
+        .avatar-spinner { position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border: 2px solid transparent; border-top-color: var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        .typing-text { font-size: 13px; color: var(--md-sys-color-on-surface-variant); font-style: italic; }
+
+        .chat-input-area { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; gap: 12px; border-top: 1px solid var(--md-sys-color-outline-variant); }
+        .chat-input { flex: 1; background: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-full); padding: 12px 20px; color: white; font-family: var(--font-family-base); font-size: 15px; }
+        .chat-input:focus { outline: none; border-color: var(--md-sys-color-primary); }
+        .send-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s; }
+        .send-btn:active { transform: scale(0.9); }
+
+        .system-msg { align-self: center; font-size: 12px; color: var(--md-sys-color-outline); background: var(--md-sys-color-surface-container); padding: 4px 12px; border-radius: var(--radius-full); }
+
+        /* ===== ADMIN UI ===== */
+        .admin-header { background: var(--md-sys-color-surface-container); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .admin-content { flex: 1; padding: 24px; overflow-y: auto; max-width: 1000px; margin: 0 auto; width: 100%; }
+        .admin-actions { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        
+        .case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .case-card { background: var(--md-sys-color-surface-container); border: 1px solid var(--md-sys-color-outline-variant); border-radius: var(--radius-lg); padding: 16px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .case-card:hover { background: var(--md-sys-color-surface-container-high); cursor: pointer; }
+        .case-info h3 { font-size: 16px; color: white; margin-bottom: 4px; }
+        .badge { font-size: 12px; padding: 2px 8px; border-radius: var(--radius-full); font-weight: 500; }
+        .badge-active { background: rgba(129, 201, 149, 0.2); color: var(--md-sys-color-success); }
+        .badge-closed { background: rgba(242, 184, 181, 0.2); color: var(--md-sys-color-error); }
 
         /* ===== MODALS ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10,8,4,0.95);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-4);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-            opacity: 1;
-            animation: modalBackdropFade 0.3s;
-        }
-
-        @keyframes modalBackdropFade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: var(--surface-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 32px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-2xl);
-            backdrop-filter: blur(20px);
-            transform: scale(0.9) translateY(20px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.2,0,0,1);
-        }
-
-        .modal.show .modal-content {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-
-        .modal-header {
-            padding: var(--space-6);
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: var(--text-xl);
-            font-weight: var(--font-black);
-            color: var(--text-gold);
-            font-family: var(--font-display);
-        }
-
-        .modal-close {
-            background: rgba(255,255,255,0.02);
-            border: none;
-            color: var(--text-muted);
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .modal-close:hover {
-            background: rgba(212,175,55,0.2);
-            color: var(--text-gold);
-        }
-
-        .modal-body {
-            padding: var(--space-6);
-        }
-
-        .modal-footer {
-            padding: var(--space-4) var(--space-6) var(--space-6);
-            display: flex;
-            gap: var(--space-3);
-            justify-content: flex-end;
-        }
-
-        /* ===== TOAST NOTIFICATION ===== */
-        .toast {
-            background: var(--surface-card);
-            border-left: 6px solid var(--gold-primary);
-            border-radius: 18px;
-            padding: 16px 24px;
-            box-shadow: var(--shadow-xl);
-            backdrop-filter: blur(8px);
-            color: var(--text-premium);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            max-width: 400px;
-            margin-bottom: 12px;
-            transform: translateX(120%) scale(0.8);
-            opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
-            will-change: transform;
-        }
-
-        .toast.show {
-            transform: translateX(0) scale(1);
-            opacity: 1;
-        }
-
-        .toast-success {
-            border-left-color: var(--success-color);
-        }
-
-        .toast-error {
-            border-left-color: var(--error-color);
-        }
-
-        .toast-warning {
-            border-left-color: var(--warning-color);
-        }
-
-        .toast-info {
-            border-left-color: var(--info-color);
-        }
-
-        .toast-icon {
-            font-size: 1.5rem;
-        }
-
-        .toast-content {
-            flex: 1;
-        }
-
-        .toast-title {
-            font-weight: var(--font-bold);
-            margin-bottom: 4px;
-            color: var(--text-gold);
-        }
-
-        .toast-message {
-            font-size: var(--text-sm);
-            color: var(--text-muted);
-        }
-
-        .toast-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-        }
-
-        .toast-close:hover {
-            background: rgba(212,175,55,0.2);
-            color: var(--text-gold);
-        }
-
-        /* ===== BALANCE DISPLAY ===== */
-        .balance-display {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .balance-amount {
-            font-size: 56px;
-            font-weight: var(--font-black);
-            background: linear-gradient(to right, #F5D97B, #FFF2C6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-            font-family: var(--font-display);
-        }
-
-        /* ===== FILTER BUTTONS ===== */
-        .filter-controls {
-            display: flex;
-            gap: var(--space-3);
-            margin-bottom: var(--space-6);
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: var(--space-2) var(--space-5);
-            border-radius: 40px;
-            background: rgba(255,255,240,0.05);
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-weight: var(--font-medium);
-            transition: all var(--transition-fast);
-        }
-
-        .filter-btn.active {
-            background: var(--gold-primary);
-            color: #0A0804;
-            border-color: var(--gold-light);
-            font-weight: var(--font-bold);
-        }
-
-        .filter-btn:hover {
-            background: rgba(212,175,55,0.3);
-            color: var(--text-premium);
-        }
-
-        /* ===== TRANSACTION ITEMS ===== */
-        .transactions-list {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-
-        .transaction-item {
-            background: var(--surface-card);
-            border-radius: 20px;
-            padding: 16px;
-            border: 1px solid rgba(212,175,55,0.1);
-            transition: all var(--transition-fast);
-        }
-
-        .transaction-item:hover {
-            border-color: rgba(212,175,55,0.5);
-            transform: translateY(-2px);
-            background: var(--surface-hover);
-        }
-
-        .transaction-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .transaction-type {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 12px;
-            border-radius: 40px;
-            background: rgba(212,175,55,0.1);
-            color: var(--text-gold);
-        }
-
-        .transaction-amount {
-            font-weight: var(--font-bold);
-        }
-
-        .transaction-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ===== CHAT SYSTEM STYLES ===== */
-        .chat-container {
-            background: var(--surface-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 20px;
-            overflow: hidden;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            background: rgba(212,175,55,0.15);
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-gold);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-gold);
-            font-weight: var(--font-bold);
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .chat-message {
-            max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            font-size: 0.9rem;
-            word-break: break-word;
-            position: relative;
-        }
-
-        .chat-message.sent {
-            align-self: flex-end;
-            background: var(--gold-gradient);
-            color: #0A0804;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chat-message.received {
-            align-self: flex-start;
-            background: var(--surface-hover);
-            color: var(--text-premium);
-            border-bottom-left-radius: 4px;
-            border: 1px solid rgba(212,175,55,0.3);
-        }
-
-        .chat-message .meta {
-            display: flex;
-            justify-content: flex-end;
-            font-size: 0.65rem;
-            opacity: 0.7;
-            margin-top: 4px;
-            gap: 8px;
-        }
-
-        .chat-input-area {
-            display: flex;
-            padding: 12px;
-            background: rgba(0,0,0,0.4);
-            gap: 8px;
-            border-top: 1px solid var(--border-gold);
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            background: rgba(255,255,240,0.1);
-            border: 1px solid var(--border-gold);
-            border-radius: 40px;
-            padding: 10px 16px;
-            color: var(--text-premium);
-            font-size: 0.9rem;
-        }
-
-        .chat-input-area input:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 0 2px rgba(212,175,55,0.2);
-        }
-
-        .chat-input-area button {
-            background: var(--gold-gradient);
-            border: none;
-            border-radius: 40px;
-            width: 44px;
-            height: 44px;
-            color: #0A0804;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .chat-input-area button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px gold;
-        }
-
-        .chat-input-area button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .chat-loading {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-muted);
-        }
-
-        .chat-welcome {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* ===== FRIENDS LIST ===== */
-        .friends-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-            margin-bottom: 16px;
-        }
-
-        .friend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(212,175,55,0.1);
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .friend-item:hover {
-            background: rgba(212,175,55,0.2);
-            transform: translateX(4px);
-        }
-
-        .friend-item.selected {
-            background: rgba(212,175,55,0.3);
-            border-color: var(--gold-primary);
-        }
-
-        .friend-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-            background: var(--gold-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0A0804;
-            font-weight: var(--font-black);
-        }
-
-        .friend-info {
-            flex: 1;
-        }
-
-        .friend-name {
-            font-weight: var(--font-bold);
-            color: var(--text-premium);
-        }
-
-        .friend-acc {
-            font-size: var(--text-xs);
-            color: var(--text-muted);
-        }
-
-        .unread-badge {
-            background: var(--gold-primary);
-            color: #0A0804;
-            border-radius: 20px;
-            padding: 2px 8px;
-            font-size: var(--text-xs);
-            font-weight: var(--font-bold);
-        }
-
-        /* ===== REDEEM CODE ===== */
-        .redeem-code-display {
-            background: #0F0E0A;
-            border: 2px dashed var(--gold-primary);
-            border-radius: 20px;
-            padding: 24px;
-            font-size: 1.25rem;
-            font-weight: var(--font-bold);
-            color: var(--text-gold);
-            letter-spacing: 2px;
-            word-break: break-all;
-            position: relative;
-        }
-
-        .redeem-copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--gold-primary);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 36px;
-            color: #0A0804;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .redeem-copy-btn:hover {
-            background: var(--gold-light);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px gold;
-        }
-
-        .redeem-instructions {
-            background: rgba(45,156,107,0.1);
-            border: 1px solid rgba(45,156,107,0.3);
-            border-radius: 20px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-
-        .redeem-instructions h4 {
-            color: var(--success-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .redeem-instructions ul {
-            padding-left: 24px;
-            color: var(--text-muted);
-        }
-
-        /* ===== SEARCH RESULTS ===== */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--surface-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 16px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 100;
-            display: none;
-        }
-
-        .search-result-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(212,175,55,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all var(--transition-fast);
-        }
-
-        .search-result-item:hover {
-            background: rgba(212,175,55,0.2);
-        }
-
-        .user-avatar-small {
-            width: 32px;
-            height: 32px;
-            border-radius: 32px;
-            background: var(--gold-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0A0804;
-            font-weight: var(--font-black);
-        }
-
-        /* ===== ADMIN PANEL ===== */
-        .admin-container {
-            display: none;
-            min-height: 100vh;
-            background: var(--background-deep);
-        }
-
-        .admin-header {
-            background: rgba(18,16,12,0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--gold-primary);
-            padding: var(--space-4) var(--space-6);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .admin-header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .admin-title {
-            font-family: var(--font-display);
-            font-size: var(--text-xl);
-            font-weight: var(--font-black);
-            background: linear-gradient(to right, #FFF5D6, #E5C158);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-title {
-            font-size: var(--text-2xl);
-            color: var(--text-premium);
-            margin-bottom: var(--space-6);
-            font-family: var(--font-display);
-            font-weight: var(--font-black);
-        }
-
-        /* ===== ACTION BUTTONS ===== */
-        .action-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .action-btn {
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-weight: var(--font-bold);
-            border: none;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .action-btn-primary {
-            background: var(--gold-primary);
-            color: #0A0804;
-        }
-
-        .action-btn-primary:hover {
-            background: var(--gold-light);
-            transform: scale(0.98);
-            box-shadow: 0 0 10px gold;
-        }
-
-        .action-btn-danger {
-            background: var(--error-color);
-            color: #0A0804;
-        }
-
-        .action-btn-success {
-            background: var(--success-color);
-            color: #0A0804;
-        }
-
-        /* ===== LIVE INDICATOR ===== */
-        .live-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--success-color);
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success-color);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success-color);
-            animation: pulse 1.5s infinite;
-        }
-
-        /* ===== LOADING SPINNER ===== */
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid rgba(212,175,55,0.2);
-            border-top: 4px solid var(--gold-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 0;
-        }
-
-        .loading-text {
-            color: var(--text-muted);
-            margin-top: 16px;
-        }
-
-        /* ===== PAY TO FRIEND MODAL ===== */
-        .payment-summary {
-            background: rgba(212,175,55,0.1);
-            border: 1px solid var(--border-gold);
-            border-radius: 16px;
-            padding: 16px;
-            margin: 16px 0;
-        }
-
-        .payment-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: var(--text-sm);
-        }
-
-        .payment-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .payment-label {
-            color: var(--text-muted);
-        }
-
-        .payment-value {
-            font-weight: var(--font-bold);
-            color: var(--text-gold);
-        }
-
-        .payment-value.success {
-            color: var(--success-color);
-        }
-
-        /* ===== UTILITY CLASSES ===== */
-        .text-muted { color: var(--text-muted) !important; }
-        .text-success { color: var(--success-color) !important; }
-        .text-error { color: var(--error-color) !important; }
-        .text-warning { color: var(--warning-color) !important; }
-        .text-gold { color: var(--text-gold) !important; }
-        .text-xs { font-size: var(--text-xs); }
-        .text-sm { font-size: var(--text-sm); }
-        .text-lg { font-size: var(--text-lg); }
-        .font-medium { font-weight: var(--font-medium); }
-        .font-semibold { font-weight: var(--font-semibold); }
-        .font-bold { font-weight: var(--font-bold); }
-        .font-black { font-weight: var(--font-black); }
-        
-        .mt-1 { margin-top: var(--space-1); }
-        .mt-2 { margin-top: var(--space-2); }
-        .mt-3 { margin-top: var(--space-3); }
-        .mt-4 { margin-top: var(--space-4); }
-        .mt-5 { margin-top: var(--space-5); }
-        .mt-6 { margin-top: var(--space-6); }
-        .mt-8 { margin-top: var(--space-8); }
-        
-        .mb-1 { margin-bottom: var(--space-1); }
-        .mb-2 { margin-bottom: var(--space-2); }
-        .mb-3 { margin-bottom: var(--space-3); }
-        .mb-4 { margin-bottom: var(--space-4); }
-        .mb-5 { margin-bottom: var(--space-5); }
-        .mb-6 { margin-bottom: var(--space-6); }
-        .mb-8 { margin-bottom: var(--space-8); }
-        
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .justify-between { justify-content: space-between; }
-        .gap-2 { gap: var(--space-2); }
-        .gap-3 { gap: var(--space-3); }
-        .gap-4 { gap: var(--space-4); }
-        .gap-6 { gap: var(--space-6); }
-        
-        .w-full { width: 100%; }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        
-        .link {
-            color: var(--text-gold);
-            font-weight: var(--font-bold);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .link:hover {
-            color: var(--gold-light);
-            text-decoration: underline;
-            transform: translateX(2px);
-        }
-
-        .bg-surface-variant {
-            background: rgba(212,175,55,0.1);
-            border-radius: 20px;
-            padding: var(--space-4);
-        }
-
-        .rounded-lg {
-            border-radius: 20px;
-        }
-
-        .p-4 {
-            padding: var(--space-4);
-        }
-
-        .py-8 {
-            padding-top: var(--space-8);
-            padding-bottom: var(--space-8);
-        }
-
-        /* Hide scrollbar but keep scroll working */
-        .modal-content::-webkit-scrollbar,
-        .chat-messages::-webkit-scrollbar {
-            display: none;
-        }
-
-        .modal-content,
-        .chat-messages {
-            scrollbar-width: none;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content { background: var(--md-sys-color-surface-container); border-radius: var(--radius-xl); width: 90%; max-width: 400px; border: 1px solid var(--md-sys-color-outline-variant); padding: 24px; }
+        .modal-title { font-size: 20px; color: white; margin-bottom: 16px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; }
     </style>
 </head>
 <body>
-    <!-- ========== GLOBAL LOADING OVERLAY ========== -->
-    <div id="globalLoadingOverlay" class="loading-overlay">
-        <div class="loading-card">
-            <div class="google-play-logo" style="margin: 0 auto 24px; width: 64px; height: 64px;">
-                <div class="play-triangle" style="border-left-width: 18px; border-top-width: 12px; border-bottom-width: 12px;"></div>
-            </div>
-            <h3 style="font-size: 1.5rem; margin-bottom: 16px; background: linear-gradient(to right, #F5D97B, #FFF2CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Playfair Display';">
-                PlayCode PRO
-            </h3>
-            <div id="loadingStepsContainer" class="loading-steps"></div>
-            <div class="pulse-dot" style="margin-top: 24px;"></div>
-        </div>
-    </div>
 
-    <!-- ========== TOAST CONTAINER ========== -->
-    <div id="toastContainer" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 12px;"></div>
-
-    <!-- ========== DIRECT SIGN IN MODAL ========== -->
-    <div id="directSignInModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Direct Sign In</h2>
-                <button class="modal-close" onclick="closeModal('directSignInModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <p class="text-muted mb-4">Enter your direct sign-in key (first 4 letters of name lowercase + last 2 digits of SAR)</p>
-                <div class="form-group">
-                    <label class="form-label">Direct Key</label>
-                    <input type="text" id="directSignInKey" class="form-control" placeholder="e.g., john12" maxlength="6" autocomplete="off">
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <div class="auth-box">
+                <div class="logo-icon"><span class="material-icons-round" style="font-size: 32px;">support_agent</span></div>
+                <h1 style="font-size: 24px; color: white; margin-bottom: 8px;">PlayCode Support</h1>
+                <p style="color: var(--md-sys-color-outline); margin-bottom: 32px; font-size: 14px;">Workspace Connect</p>
+                
+                <div style="margin-bottom: 16px; text-align: left;">
+                    <label style="display: block; font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">Case ID or Admin ID</label>
+                    <input type="text" id="loginId" class="form-control" placeholder="Enter ID to connect" autocomplete="off">
                 </div>
-                <div class="bg-surface-variant rounded-lg p-4 mt-4">
-                    <p class="text-sm text-muted">Example: If your name is "John Doe" and SAR is "12345", enter: <span class="font-medium text-success">john45</span></p>
+                <div style="margin-bottom: 24px; text-align: left;" id="loginNameGroup">
+                    <label style="display: block; font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-bottom: 8px;">Your Full Name</label>
+                    <input type="text" id="loginName" class="form-control" placeholder="E.g. Samarth Dwivedi" autocomplete="off">
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('directSignInModal')">Cancel</button>
-                <button class="btn btn-primary" onclick="processDirectSignIn()">
-                    <span class="material-icons-round">bolt</span>
-                    Sign In Directly
-                </button>
+                <button class="btn btn-primary btn-block" onclick="window.handleLogin()">Connect to Support</button>
             </div>
         </div>
     </div>
 
-    <!-- ========== SIGN IN PAGE ========== -->
-    <div id="signinPage" class="auth-container">
-        <div class="auth-box">
-            <div class="auth-header" style="text-align: center; margin-bottom: 32px;">
-                <div class="auth-logo" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px;">
-                    <div class="google-play-logo">
-                        <div class="play-triangle"></div>
-                    </div>
-                    <div class="auth-logo-text">PlayCode PRO</div>
+    <div id="loaderScreen" class="screen loader-screen">
+        <div class="pulse-dot"></div>
+        <div id="loaderText">verify</div>
+    </div>
+
+    <div id="chatScreen" class="screen">
+        <div class="chat-header">
+            <div class="chat-title-area">
+                <div class="chat-title">
+                    <div class="status-dot" id="chatStatusDot"></div>
+                    <span id="chatHeaderTitle">Support Agent</span>
                 </div>
-                <h1 style="font-size: 1.8rem; color: var(--text-premium); margin-bottom: 8px;">Golden Access</h1>
-                <p class="auth-subtitle" style="color: var(--text-muted);">Sign in to your premium account</p>
+                <div class="chat-subtitle" id="chatHeaderSubtitle">Case: ...</div>
             </div>
-            <form id="signinForm" onsubmit="event.preventDefault(); startSignInSequence();">
-                <div class="form-group">
-                    <label class="form-label">Account Number</label>
-                    <input type="text" id="loginAccNo" class="form-control" placeholder="Enter your account number" required autocomplete="username">
+            <div style="display: flex; gap: 12px;" id="chatActions">
                 </div>
-                <div class="form-group">
-                    <label class="form-label">SAR Number</label>
-                    <input type="password" id="loginSar" class="form-control" placeholder="Enter your SAR number" required autocomplete="current-password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-6" id="signinBtn">
-                    <span class="btn-text">Sign In</span>
-                </button>
-            </form>
-            <button class="btn btn-secondary btn-block mt-4" onclick="showDirectSignInModal()">
-                <span class="material-icons-round">bolt</span>
-                Direct Sign In
-            </button>
-            <div class="text-center mt-6">
-                <p class="text-sm text-muted">Don't have an account? 
-                    <a href="#" class="link" onclick="showSignUp()">Create Account</a>
-                </p>
-                <button class="btn btn-secondary btn-block mt-4" onclick="showAdminModal()">
-                    <span class="material-icons-round">admin_panel_settings</span>
-                    Admin Access
-                </button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
             </div>
+        
+        <div class="chat-input-area" id="chatInputArea">
+            <input type="text" id="msgInput" class="chat-input" placeholder="Type a message..." onkeypress="window.checkEnter(event)">
+            <button class="send-btn" id="sendBtn" onclick="window.sendMessage()"><span class="material-icons-round">send</span></button>
         </div>
     </div>
 
-    <!-- ========== SIGN UP PAGE ========== -->
-    <div id="signupPage" class="auth-container" style="display: none;">
-        <div class="auth-box">
-            <div class="auth-header" style="text-align: center; margin-bottom: 32px;">
-                <div class="auth-logo" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
-                    <div class="google-play-logo">
-                        <div class="play-triangle"></div>
-                    </div>
-                    <div class="auth-logo-text">Create Account</div>
-                </div>
-                <h1 style="font-size: 1.8rem; color: var(--text-premium); margin-bottom: 8px;">Join PlayCode PRO</h1>
-                <p class="auth-subtitle" style="color: var(--text-muted);">Create your premium account</p>
-            </div>
-            <form id="signupForm" onsubmit="event.preventDefault(); startSignUpSequence();">
-                <div class="form-group">
-                    <label class="form-label">Account Number</label>
-                    <input type="text" id="accNo" class="form-control" placeholder="Enter account number" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">SAR Number</label>
-                    <input type="password" id="sarNo" class="form-control" placeholder="Enter SAR number" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Agent Code</label>
-                    <select id="agentCode" class="form-control" required>
-                        <option value="">Select your agent</option>
-                        <option value="6215">Agent 6215</option>
-                        <option value="3773">Agent 3773</option>
-                        <option value="1583">Agent 1583</option>
-                        <option value="4848">Agent 4848</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">4-digit PIN</label>
-                    <input type="password" id="pin" class="form-control" placeholder="Create a 4-digit PIN" maxlength="4" pattern="\d{4}" required>
-                    <p class="text-xs text-muted mt-1">Must be exactly 4 digits</p>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block mt-6" id="signupBtn">
-                    <span class="btn-text">Create Account</span>
-                </button>
-            </form>
-            <div class="text-center mt-6">
-                <p class="text-sm text-muted">Already have an account? 
-                    <a href="#" class="link" onclick="showSignIn()">Sign In</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== DASHBOARD ========== -->
-    <div id="dashboard" class="dashboard">
-        <div class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="google-play-logo">
-                        <div class="play-triangle"></div>
-                    </div>
-                    <div class="logo-text">PlayCode PRO · Golden Edition</div>
-                </div>
-                <div class="user-menu">
-                    <div class="user-avatar" onclick="toggleUserMenu()" id="userAvatar">
-                        <span id="userInitial">U</span>
-                    </div>
-                    <div id="userDropdown" class="dropdown-menu">
-                        <div class="dropdown-item">
-                            <span class="material-icons-round">account_circle</span>
-                            <span id="userName">Loading...</span>
-                        </div>
-                        <div class="dropdown-item">
-                            <span class="material-icons-round">account_balance_wallet</span>
-                            <span id="balanceDisplay">Balance: ₹0</span>
-                        </div>
-                        <div class="dropdown-item" onclick="showManageAccount()">
-                            <span class="material-icons-round">dashboard</span>
-                            <span>Dashboard</span>
-                        </div>
-                        <div class="dropdown-item" onclick="showMyOrders()">
-                            <span class="material-icons-round">receipt_long</span>
-                            <span>My Orders</span>
-                        </div>
-                        <div class="dropdown-item" onclick="showTransactionHistory()">
-                            <span class="material-icons-round">history</span>
-                            <span>Transaction History</span>
-                        </div>
-                        <div class="dropdown-item" onclick="logout()">
-                            <span class="material-icons-round">logout</span>
-                            <span>Sign Out</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <!-- Welcome Section -->
-            <div class="welcome-section">
-                <h1 class="welcome-title" id="welcomeTitle">Welcome to PlayCode PRO</h1>
-                <p class="welcome-subtitle" id="welcomeSubtitle">Manage your Google Play codes with golden touch</p>
-            </div>
-
-            <!-- Manage Account Features -->
-            <div id="manageAccount" class="features-grid">
-                <div class="feature-card" onclick="checkBalance()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">account_balance_wallet</span>
-                    </div>
-                    <h3 class="feature-title">Check Balance</h3>
-                    <p class="feature-description">View your current account balance</p>
-                </div>
-                <div class="feature-card" onclick="addBalance()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">add_circle</span>
-                    </div>
-                    <h3 class="feature-title">Add Balance</h3>
-                    <p class="feature-description">Deposit funds to your account</p>
-                </div>
-                <div class="feature-card" onclick="orderCode()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">qr_code_2</span>
-                    </div>
-                    <h3 class="feature-title">Order Code</h3>
-                    <p class="feature-description">Generate Google Play codes</p>
-                </div>
-                <div class="feature-card" onclick="payToFriend()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">send</span>
-                    </div>
-                    <h3 class="feature-title">Pay to Friend</h3>
-                    <p class="feature-description">Send money to friends</p>
-                </div>
-                <div class="feature-card" onclick="showTransactionHistory()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">history</span>
-                    </div>
-                    <h3 class="feature-title">Transactions</h3>
-                    <p class="feature-description">View your transaction history</p>
-                </div>
-                <div class="feature-card" onclick="openChat()">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">chat</span>
-                    </div>
-                    <h3 class="feature-title">Chat with Friend</h3>
-                    <p class="feature-description">Message your friends instantly</p>
-                </div>
-            </div>
-
-            <!-- Transaction History Section -->
-            <div id="transactionHistorySection" style="display: none;">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="section-title">Transaction History</h2>
-                    <div class="live-indicator">
-                        <div class="live-dot"></div>
-                        <span>Live Updates</span>
-                    </div>
-                </div>
-                <div class="filter-controls">
-                    <button class="filter-btn active" onclick="filterTransactions('all')">All</button>
-                    <button class="filter-btn" onclick="filterTransactions('deposit')">Deposits</button>
-                    <button class="filter-btn" onclick="filterTransactions('withdrawal')">Withdrawals</button>
-                    <button class="filter-btn" onclick="filterTransactions('transfer')">Transfers</button>
-                    <button class="filter-btn" onclick="filterTransactions('order')">Orders</button>
-                </div>
-                <div class="transactions-list" id="transactionsList"></div>
-            </div>
-
-            <!-- My Orders Section -->
-            <div id="myOrdersSection" style="display: none;">
-                <h2 class="section-title">My Orders</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Amount</th>
-                                <th>Date & Time</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="userOrdersTable"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== ADMIN PANEL ========== -->
-    <div id="adminPanel" class="admin-container">
+    <div id="adminScreen" class="screen">
         <div class="admin-header">
-            <div class="admin-header-content">
-                <div class="logo">
-                    <div class="google-play-logo">
-                        <div class="play-triangle"></div>
-                    </div>
-                    <div class="admin-title">Admin Dashboard</div>
-                </div>
-                <button class="btn btn-danger" onclick="logoutAdmin()">
-                    <span class="material-icons-round">logout</span>
-                    Logout
-                </button>
-            </div>
+            <h2 style="color: white; font-size: 20px;">Admin Workspace</h2>
+            <button class="btn btn-secondary" style="min-height: 36px; padding: 0 16px; font-size: 13px;" onclick="window.logout()">Sign Out</button>
         </div>
-        <div class="container">
-            <h2 class="section-title">User Management</h2>
-            <div class="table-container mb-12">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Account No</th>
-                            <th>Full Name</th>
-                            <th>Balance</th>
-                            <th>Agent Code</th>
-                            <th>Joined Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTable"></tbody>
-                </table>
+        <div class="admin-content">
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="window.generateNewCase()"><span class="material-icons-round">add</span> Generate Case ID</button>
+                <button class="btn btn-secondary" onclick="window.showJoinModal()"><span class="material-icons-round">login</span> Join Any Case</button>
             </div>
 
-            <h2 class="section-title">All Orders</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Account No</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="allOrdersTable"></tbody>
-                </table>
-            </div>
+            <h2 style="color: white; font-size: 18px; margin-bottom: 16px;">Active Cases</h2>
+            <div class="case-grid" id="activeCasesGrid"></div>
+
+            <h2 style="color: white; font-size: 18px; margin-bottom: 16px; margin-top: 16px;">Closed Cases</h2>
+            <div class="case-grid" id="closedCasesGrid"></div>
         </div>
     </div>
 
-    <!-- ========== ADMIN MODAL ========== -->
-    <div id="adminModal" class="modal">
+    <div id="passwordModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Admin Login</h2>
-                <button class="modal-close" onclick="closeAdminModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">PUKCODE</label>
-                    <input type="password" id="pukCode" class="form-control" placeholder="Enter admin PUKCODE">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeAdminModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="adminLogin()">Login as Admin</button>
+            <h2 class="modal-title">Admin Authentication</h2>
+            <input type="password" id="adminPassword" class="form-control" placeholder="Enter Admin Password">
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="window.closeModal('passwordModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="window.verifyAdmin()">Login</button>
             </div>
         </div>
     </div>
 
-    <!-- ========== BALANCE MODAL ========== -->
-    <div id="balanceModal" class="modal">
+    <div id="joinModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Account Balance</h2>
-                <button class="modal-close" onclick="closeModal('balanceModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div id="balanceLoading" class="loading">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Fetching your balance...</p>
-                </div>
-                <div id="balanceResult" style="display: none;">
-                    <div class="balance-display">
-                        <div class="balance-amount" id="balanceAmount">₹0</div>
-                        <p class="text-muted">Current available balance</p>
-                        <div class="mt-6">
-                            <button class="btn btn-primary" onclick="addBalance()">Add Funds</button>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="modal-title">Join Case</h2>
+            <input type="text" id="joinCaseId" class="form-control" placeholder="Enter Case ID" style="margin-bottom: 16px;">
+            <input type="text" id="adminDisplayName" class="form-control" placeholder="Your Display Name (e.g. Agent Som)">
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="window.closeModal('joinModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="window.executeJoinCase()">Join Chat</button>
             </div>
         </div>
     </div>
 
-    <!-- ========== ADD BALANCE MODAL ========== -->
-    <div id="addBalanceModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Add Balance</h2>
-                <button class="modal-close" onclick="closeModal('addBalanceModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Amount (₹)</label>
-                    <input type="number" id="addAmount" class="form-control" placeholder="Enter amount to deposit" min="10" step="10">
-                    <p class="text-sm text-muted mt-1">Minimum deposit: ₹10</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('addBalanceModal')">Cancel</button>
-                <button class="btn btn-primary" onclick="proceedToPayment()">Continue to Payment</button>
-            </div>
-        </div>
-    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue, push, update } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
 
-    <!-- ========== PAYMENT MODAL ========== -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Complete Payment</h2>
-                <button class="modal-close" onclick="closeModal('paymentModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Transaction Reference</label>
-                    <input type="text" id="transactionCode" class="form-control" placeholder="Enter transaction code">
-                    <p class="text-sm text-muted mt-1">Enter the reference code provided by your agent</p>
-                </div>
-                <div class="bg-surface-variant rounded-lg p-4 mt-4">
-                    <div class="flex justify-between text-sm mb-2">
-                        <span class="text-muted">Payment Amount:</span>
-                        <span class="font-semibold" id="paymentAmountDisplay">₹0</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-muted">New Balance:</span>
-                        <span class="font-semibold text-success" id="newBalanceDisplay">₹0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('paymentModal')">Cancel</button>
-                <button class="btn btn-primary" onclick="completePayment()">Confirm Payment</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== ORDER CODE MODAL ========== -->
-    <div id="orderCodeModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Generate Code</h2>
-                <button class="modal-close" onclick="closeModal('orderCodeModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Amount (₹)</label>
-                    <input type="number" id="orderAmount" class="form-control" placeholder="Enter amount for code" min="10" step="10">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Confirm PIN</label>
-                    <input type="password" id="orderPin" class="form-control" placeholder="Enter your 4-digit PIN" maxlength="4" pattern="\d{4}">
-                </div>
-                <div class="bg-surface-variant rounded-lg p-4">
-                    <div class="flex justify-between text-sm mb-2">
-                        <span class="text-muted">Current Balance:</span>
-                        <span class="font-semibold" id="currentBalanceDisplay">₹0</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-muted">Balance After:</span>
-                        <span class="font-semibold" id="balanceAfterDisplay">₹0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('orderCodeModal')">Cancel</button>
-                <button class="btn btn-primary" onclick="submitOrder()">Generate Code</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== PAY TO FRIEND MODAL ========== -->
-    <div id="payToFriendModal" class="modal">
-        <div class="modal-content" style="max-width: 500px;">
-            <div class="modal-header">
-                <h2 class="modal-title">Send Money to Friend</h2>
-                <button class="modal-close" onclick="closePayToFriendModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Friend's Account Number</label>
-                    <div class="user-search" style="position: relative;">
-                        <input type="text" id="friendAccNo" class="form-control" placeholder="Enter account number" oninput="searchUsersForPayment()">
-                        <div id="paymentSearchResults" class="search-results"></div>
-                    </div>
-                </div>
-                
-                <div id="friendPaymentInfo" style="display: none;">
-                    <div class="bg-surface-variant rounded-lg p-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="friend-avatar" id="paymentFriendAvatar">F</div>
-                            <div>
-                                <div class="font-bold" id="paymentFriendName">Friend Name</div>
-                                <div class="text-xs text-muted" id="paymentFriendAcc">Account</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Amount (₹)</label>
-                        <input type="number" id="transferAmount" class="form-control" placeholder="Enter amount to send" min="1" oninput="updatePaymentSummary()">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Confirm PIN</label>
-                        <input type="password" id="transferPin" class="form-control" placeholder="Enter your 4-digit PIN" maxlength="4" pattern="\d{4}">
-                    </div>
-
-                    <div class="payment-summary">
-                        <div class="payment-row">
-                            <span class="payment-label">Your Balance:</span>
-                            <span class="payment-value" id="currentPaymentBalance">₹0</span>
-                        </div>
-                        <div class="payment-row">
-                            <span class="payment-label">Transfer Amount:</span>
-                            <span class="payment-value" id="paymentAmount">₹0</span>
-                        </div>
-                        <div class="payment-row">
-                            <span class="payment-label">Balance After:</span>
-                            <span class="payment-value success" id="balanceAfterPayment">₹0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closePayToFriendModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="processTransfer()" id="sendMoneyBtn">Send Money</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== CHAT WITH FRIEND MODAL ========== -->
-    <div id="chatModal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
-            <div class="modal-header">
-                <h2 class="modal-title">Chat with Friends</h2>
-                <button class="modal-close" onclick="closeChatModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-4">
-                    <input type="text" id="chatSearch" class="form-control" placeholder="Search friends by name or account..." oninput="searchFriends()">
-                </div>
-                
-                <div id="friendsListContainer" class="friends-list"></div>
-                
-                <div id="chatContainer" style="display: none;">
-                    <div class="chat-container">
-                        <div class="chat-header">
-                            <span class="material-icons-round">chat</span>
-                            Chatting with <span id="currentChatFriendName">Friend</span>
-                            <button class="btn-close-chat" onclick="closeCurrentChat()" style="margin-left: auto; background: none; border: none; color: var(--text-gold); cursor: pointer;">×</button>
-                        </div>
-                        <div id="chatMessages" class="chat-messages">
-                            <div class="chat-welcome">Select a friend to start chatting</div>
-                        </div>
-                        <div class="chat-input-area">
-                            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendChatMessage()">
-                            <button onclick="sendChatMessage()" id="sendChatBtn">
-                                <span class="material-icons-round">send</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== REDEEM CODE MODAL ========== -->
-    <div id="redeemCodeModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Redeem Code</h2>
-                <button class="modal-close" onclick="closeModal('redeemCodeModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="redeem-code-container">
-                    <p class="text-muted mb-4">Your Google Play Redeem Code</p>
-                    <div class="redeem-code-display">
-                        <span id="redeemCodeValue">Loading...</span>
-                        <button class="redeem-copy-btn" onclick="copyRedeemCode()">
-                            <span class="material-icons-round" style="font-size: 18px;">content_copy</span>
-                        </button>
-                    </div>
-                    <div class="redeem-instructions">
-                        <h4>
-                            <span class="material-icons-round">info</span>
-                            How to use this code:
-                        </h4>
-                        <ul>
-                            <li>Open the Google Play Store app</li>
-                            <li>Tap on your profile icon</li>
-                            <li>Select "Payments & subscriptions"</li>
-                            <li>Choose "Redeem gift code"</li>
-                            <li>Enter the code and tap "Redeem"</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('redeemCodeModal')">Close</button>
-                <button class="btn btn-primary" onclick="copyRedeemCode()">
-                    <span class="material-icons-round">content_copy</span>
-                    Copy Code
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== ADMIN BALANCE MODAL ========== -->
-    <div id="adminBalanceModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Update User Balance</h2>
-                <button class="modal-close" onclick="closeModal('adminBalanceModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Action</label>
-                    <select id="balanceAction" class="form-control">
-                        <option value="add">Add Balance</option>
-                        <option value="deduct">Deduct Balance</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Amount (₹)</label>
-                    <input type="number" id="adminBalanceAmount" class="form-control" placeholder="Enter amount" min="1">
-                </div>
-                <div class="bg-surface-variant rounded-lg p-4">
-                    <p class="text-sm font-medium mb-1" id="adminUserInfo">User: Loading...</p>
-                    <p class="text-sm text-muted" id="adminCurrentBalance">Current Balance: Loading...</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('adminBalanceModal')">Cancel</button>
-                <button class="btn btn-primary" onclick="updateUserBalance()">Update Balance</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== ORDER DETAILS MODAL ========== -->
-    <div id="orderDetailsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Order Management</h2>
-                <button class="modal-close" onclick="closeModal('orderDetailsModal')">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Redeem Code</label>
-                    <input type="text" id="redeemCode" class="form-control" placeholder="Enter redemption code for user">
-                </div>
-                <div class="bg-surface-variant rounded-lg p-4">
-                    <p class="text-sm font-medium mb-2" id="orderInfo">Order: Loading...</p>
-                    <p class="text-sm text-muted" id="orderUserInfo">User: Loading...</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" onclick="cancelOrder()">Cancel Order</button>
-                <button class="btn btn-success" onclick="completeOrder()">Complete Order</button>
-            </div>
-        </div>
-    </div>
-     <script>
-        // ============================================
-        // FIREBASE CONFIGURATION
-        // ============================================
         const firebaseConfig = {
-            apiKey: "AIzaSyC799pLj50Sg877kdBPTIXkJPRGHr4ZC4s",
-            authDomain: "playcodesetup.firebaseapp.com",
-            databaseURL: "https://playcodesetup-default-rtdb.firebaseio.com",
-            projectId: "playcodesetup",
-            storageBucket: "playcodesetup.firebasestorage.app",
-            messagingSenderId: "548277697840",
-            appId: "1:548277697840:web:df6c2524d22ca93d089cf5",
-            measurementId: "G-S44Y26B9F5"
+            apiKey: "AIzaSyCLpIH68Ad1dY460yXsk7yXIygs7JBZc_U",
+            authDomain: "playcode-23006.firebaseapp.com",
+            databaseURL: "https://playcode-23006-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "playcode-23006",
+            storageBucket: "playcode-23006.firebasestorage.app",
+            messagingSenderId: "638483480224",
+            appId: "1:638483480224:web:4fe80fd15137f030add3c5"
         };
 
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-        // ============================================
-        // GLOBAL VARIABLES
-        // ============================================
-        let currentUser = null;
-        let currentAdmin = false;
-        let selectedUserId = null;
-        let selectedOrderId = null;
-        let paymentAmount = 0;
-        let transactionFilter = 'all';
-        let realTimeListeners = {};
-        let allUsersCache = {};
-        let currentRedeemCode = '';
+        // State variables
+        let currentRole = null; 
+        let currentCaseId = null;
+        let myName = null;
+        let caseStatus = 'active';
+        let messagesListener = null;
+        let currentMessagesData = null;
+        let typingTimeout = null;
+        let renderedMsgIds = new Set();
+        let isFirstLoad = true;
+
+        // Sounds
+        const sendSound = new Audio('data:audio/mp3;base64,//NExAAAAANIAAAAAExBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'); 
+        const recvSound = new Audio('data:audio/mp3;base64,//NExAAAAANIAAAAAExBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'); 
         
-        // Chat variables
-        let currentChatFriend = null;
-        let chatMessagesListener = null;
-        let friendsList = [];
-        let unreadCounts = {};
-
-        // ============================================
-        // TOAST NOTIFICATION
-        // ============================================
-        function showAnimatedToast(message, type = 'info', duration = 5000) {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            const icons = {
-                success: 'check_circle',
-                error: 'error',
-                warning: 'warning',
-                info: 'info'
-            };
-            toast.innerHTML = `
-                <span class="material-icons-round toast-icon">${icons[type]}</span>
-                <div class="toast-content">
-                    <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
-                    <div class="toast-message">${message}</div>
-                </div>
-                <button class="toast-close" onclick="this.parentElement.remove()">×</button>
-            `;
-            container.appendChild(toast);
-            setTimeout(() => toast.classList.add('show'), 20);
-            setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.classList.remove('show');
-                    setTimeout(() => toast.remove(), 500);
-                }
-            }, duration);
-        }
-        const showToast = showAnimatedToast;
-
-        // ============================================
-        // DIRECT SIGN IN
-        // ============================================
-        function showDirectSignInModal() {
-            document.getElementById('directSignInKey').value = '';
-            showModal('directSignInModal');
+        function playSound(type) {
+            try { if(type === 'send') sendSound.play(); else recvSound.play(); } catch(e) {}
         }
 
-        function processDirectSignIn() {
-            const directInput = document.getElementById('directSignInKey').value.trim();
+        // --- View & Navigation ---
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        window.closeModal = function(id) {
+            document.getElementById(id).classList.remove('show');
+            setTimeout(() => { document.getElementById(id).style.display = 'none'; }, 300);
+        }
+
+        function openModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = 'flex';
+            setTimeout(() => { m.classList.add('show'); }, 10);
+        }
+
+        // --- Login Flow ---
+        document.getElementById('loginId').addEventListener('input', function(e) {
+            const val = e.target.value.trim();
+            document.getElementById('loginNameGroup').style.display = (val === 'Admin@playcode') ? 'none' : 'block';
+        });
+
+        window.handleLogin = function() {
+            const inputId = document.getElementById('loginId').value.trim();
+            const inputName = document.getElementById('loginName').value.trim();
             
-            if (!directInput) {
-                showToast('Please enter your direct sign-in key', 'error');
-                return;
-            }
+            if(!inputId) return alert("Please enter an ID");
 
-            if (directInput.length < 6) {
-                showToast('Invalid key format. Expected 6 characters.', 'error');
-                return;
-            }
-
-            const namePart = directInput.substring(0, 4).toLowerCase();
-            const sarLastTwo = directInput.substring(4, 6);
-
-            closeModal('directSignInModal');
-
-            const overlay = document.getElementById('globalLoadingOverlay');
-            const stepsContainer = document.getElementById('loadingStepsContainer');
-            stepsContainer.innerHTML = `
-                <div class="loading-step active" id="dstep1">
-                    <div class="step-icon"><span class="material-icons-round">flash_on</span></div>
-                    <div>
-                        <strong>Direct sign-in</strong>
-                        <div style="font-size:12px;">2 seconds</div>
-                    </div>
-                </div>
-            `;
-            overlay.classList.add('show');
-
-            setTimeout(() => {
-                overlay.classList.remove('show');
-                database.ref('users').once('value')
-                    .then(snapshot => {
-                        let foundUser = null;
-                        snapshot.forEach(childSnapshot => {
-                            const user = childSnapshot.val();
-                            const nameFirst4 = user.fullName ? user.fullName.substring(0, 4).toLowerCase() : '';
-                            const sarEnd = user.sarNo ? user.sarNo.slice(-2) : '';
-                            if (nameFirst4 === namePart && sarEnd === sarLastTwo) {
-                                foundUser = user;
-                            }
-                        });
-                        if (foundUser) {
-                            currentUser = foundUser;
-                            database.ref('users/' + foundUser.accNo).update({
-                                lastLogin: new Date().toISOString()
-                            });
-                            showDashboard();
-                            loadUserData();
-                            initRealTimeListeners();
-                            showToast(`Welcome back, ${foundUser.fullName}!`, 'success');
-                        } else {
-                            showToast('No matching user found', 'error');
-                        }
-                    })
-                    .catch(error => showToast(error.message, 'error'));
-            }, 2000);
-        }
-
-        // ============================================
-        // SIGN IN SEQUENCE
-        // ============================================
-        function startSignInSequence() {
-            const accNo = document.getElementById('loginAccNo').value.trim();
-            const sarNo = document.getElementById('loginSar').value.trim();
-            
-            if (!accNo || !sarNo) {
-                showToast('Please enter both account number and SAR number', 'error');
-                return;
-            }
-
-            const overlay = document.getElementById('globalLoadingOverlay');
-            const stepsContainer = document.getElementById('loadingStepsContainer');
-            
-            stepsContainer.innerHTML = `
-                <div class="loading-step" id="step1">
-                    <div class="step-icon"><span class="material-icons-round">verified</span></div>
-                    <div><strong>Verifying credentials</strong><div style="font-size:12px;">3 seconds</div></div>
-                </div>
-                <div class="loading-step" id="step2">
-                    <div class="step-icon"><span class="material-icons-round">cloud_upload</span></div>
-                    <div><strong>Connecting to server</strong><div style="font-size:12px;">3 seconds</div></div>
-                </div>
-                <div class="loading-step" id="step3">
-                    <div class="step-icon"><span class="material-icons-round">lock_open</span></div>
-                    <div><strong>Signing in securely</strong><div style="font-size:12px;">5 seconds</div></div>
-                </div>
-            `;
-            
-            overlay.classList.add('show');
-
-            setTimeout(() => document.getElementById('step1')?.classList.add('active'), 100);
-            setTimeout(() => {
-                document.getElementById('step1')?.classList.remove('active');
-                document.getElementById('step1')?.classList.add('completed');
-                document.getElementById('step2')?.classList.add('active');
-            }, 3000);
-            setTimeout(() => {
-                document.getElementById('step2')?.classList.remove('active');
-                document.getElementById('step2')?.classList.add('completed');
-                document.getElementById('step3')?.classList.add('active');
-            }, 6000);
-            setTimeout(() => {
-                document.getElementById('step3')?.classList.add('completed');
-                overlay.classList.remove('show');
-                performSignIn();
-            }, 11000);
-        }
-
-        function performSignIn() {
-            const accNo = document.getElementById('loginAccNo').value.trim();
-            const sarNo = document.getElementById('loginSar').value.trim();
-            const btn = document.getElementById('signinBtn');
-            
-            btn.classList.add('btn-loading');
-
-            database.ref('users/' + accNo).once('value')
-                .then(snapshot => {
-                    if (snapshot.exists()) {
-                        const user = snapshot.val();
-                        if (user.sarNo === sarNo) {
-                            database.ref('users/' + accNo).update({
-                                lastLogin: new Date().toISOString()
-                            });
-                            currentUser = user;
-                            showDashboard();
-                            loadUserData();
-                            initRealTimeListeners();
-                            showToast(`Welcome back, ${user.fullName}!`, 'success');
-                        } else {
-                            showToast('Invalid SAR number!', 'error');
-                        }
-                    } else {
-                        showToast('Account not found!', 'error');
-                    }
-                })
-                .catch(error => showToast(error.message, 'error'))
-                .finally(() => btn.classList.remove('btn-loading'));
-        }
-
-        // ============================================
-        // SIGN UP SEQUENCE
-        // ============================================
-        function startSignUpSequence() {
-            const accNo = document.getElementById('accNo').value.trim();
-            const sarNo = document.getElementById('sarNo').value.trim();
-            const fullName = document.getElementById('fullName').value.trim();
-            const agentCode = document.getElementById('agentCode').value;
-            const pin = document.getElementById('pin').value;
-
-            if (!accNo || !sarNo || !fullName || !agentCode || !pin || pin.length !== 4 || !/^\d{4}$/.test(pin)) {
-                showToast('Please fill all fields correctly. PIN must be exactly 4 digits.', 'error');
-                return;
-            }
-
-            const overlay = document.getElementById('globalLoadingOverlay');
-            const stepsContainer = document.getElementById('loadingStepsContainer');
-
-            stepsContainer.innerHTML = `
-                <div class="loading-step" id="step1">
-                    <div class="step-icon"><span class="material-icons-round">assignment</span></div>
-                    <div><strong>Validating information</strong><div style="font-size:12px;">3 seconds</div></div>
-                </div>
-                <div class="loading-step" id="step2">
-                    <div class="step-icon"><span class="material-icons-round">cloud_upload</span></div>
-                    <div><strong>Creating secure account</strong><div style="font-size:12px;">4 seconds</div></div>
-                </div>
-                <div class="loading-step" id="step3">
-                    <div class="step-icon"><span class="material-icons-round">celebration</span></div>
-                    <div><strong>Setting up your dashboard</strong><div style="font-size:12px;">4 seconds</div></div>
-                </div>
-            `;
-
-            overlay.classList.add('show');
-
-            setTimeout(() => document.getElementById('step1')?.classList.add('active'), 100);
-            setTimeout(() => {
-                document.getElementById('step1')?.classList.remove('active');
-                document.getElementById('step1')?.classList.add('completed');
-                document.getElementById('step2')?.classList.add('active');
-            }, 3000);
-            setTimeout(() => {
-                document.getElementById('step2')?.classList.remove('active');
-                document.getElementById('step2')?.classList.add('completed');
-                document.getElementById('step3')?.classList.add('active');
-            }, 7000);
-            setTimeout(() => {
-                overlay.classList.remove('show');
-                performSignUp();
-            }, 11000);
-        }
-
-        function performSignUp() {
-            const accNo = document.getElementById('accNo').value.trim();
-            const sarNo = document.getElementById('sarNo').value.trim();
-            const fullName = document.getElementById('fullName').value.trim();
-            const agentCode = document.getElementById('agentCode').value;
-            const pin = document.getElementById('pin').value;
-            const btn = document.getElementById('signupBtn');
-            
-            btn.classList.add('btn-loading');
-
-            database.ref('users/' + accNo).once('value')
-                .then(snapshot => {
-                    if (snapshot.exists()) {
-                        showToast('Account already exists!', 'error');
-                        btn.classList.remove('btn-loading');
-                    } else {
-                        const userData = {
-                            accNo: accNo,
-                            sarNo: sarNo,
-                            fullName: fullName,
-                            agentCode: agentCode,
-                            pin: pin,
-                            balance: 0,
-                            createdAt: new Date().toISOString(),
-                            lastLogin: null
-                        };
-
-                        database.ref('users/' + accNo).set(userData)
-                            .then(() => {
-                                const transactionId = 'TX' + Date.now();
-                                const transactionData = {
-                                    transactionId: transactionId,
-                                    accNo: accNo,
-                                    type: 'account_creation',
-                                    amount: 0,
-                                    description: 'Account created successfully',
-                                    date: new Date().toISOString(),
-                                    balanceAfter: 0
-                                };
-                                return database.ref('transactions/' + transactionId).set(transactionData);
-                            })
-                            .then(() => {
-                                showToast('Account created successfully!', 'success');
-                                showSignIn();
-                                clearSignUpForm();
-                            })
-                            .catch(error => showToast(error.message, 'error'))
-                            .finally(() => {
-                                btn.classList.remove('btn-loading');
-                                btn.innerHTML = '<span class="btn-text">Create Account</span>';
-                            });
-                    }
-                })
-                .catch(error => {
-                    showToast(error.message, 'error');
-                    btn.classList.remove('btn-loading');
-                });
-        }
-
-        // ============================================
-        // AUTH HELPER FUNCTIONS
-        // ============================================
-        function showSignUp() {
-            document.getElementById('signinPage').style.display = 'none';
-            document.getElementById('signupPage').style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
-
-        function showSignIn() {
-            document.getElementById('signupPage').style.display = 'none';
-            document.getElementById('signinPage').style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
-
-        function clearSignUpForm() {
-            ['accNo', 'sarNo', 'fullName', 'agentCode', 'pin'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '';
-            });
-        }
-
-        function clearSignInForm() {
-            document.getElementById('loginAccNo').value = '';
-            document.getElementById('loginSar').value = '';
-        }
-
-        // ============================================
-        // DASHBOARD FUNCTIONS
-        // ============================================
-        function showDashboard() {
-            document.getElementById('signinPage').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-            document.getElementById('myOrdersSection').style.display = 'none';
-            document.getElementById('transactionHistorySection').style.display = 'none';
-            document.getElementById('manageAccount').style.display = 'grid';
-            window.scrollTo(0, 0);
-        }
-
-        function toggleUserMenu() {
-            document.getElementById('userDropdown').classList.toggle('show');
-        }
-
-        function showManageAccount() {
-            document.getElementById('myOrdersSection').style.display = 'none';
-            document.getElementById('transactionHistorySection').style.display = 'none';
-            document.getElementById('manageAccount').style.display = 'grid';
-            toggleUserMenu();
-        }
-
-        function showMyOrders() {
-            document.getElementById('manageAccount').style.display = 'none';
-            document.getElementById('transactionHistorySection').style.display = 'none';
-            document.getElementById('myOrdersSection').style.display = 'block';
-            loadUserOrders();
-            toggleUserMenu();
-        }
-
-        function showTransactionHistory() {
-            document.getElementById('manageAccount').style.display = 'none';
-            document.getElementById('myOrdersSection').style.display = 'none';
-            document.getElementById('transactionHistorySection').style.display = 'block';
-            loadTransactionHistory();
-            toggleUserMenu();
-        }
-
-        function loadUserData() {
-            if (currentUser) {
-                document.getElementById('userName').textContent = currentUser.fullName;
-                updateBalanceDisplay();
-                document.getElementById('userInitial').textContent = currentUser.fullName.charAt(0).toUpperCase();
-                document.getElementById('welcomeTitle').textContent = `Welcome, ${currentUser.fullName}`;
-                document.getElementById('welcomeSubtitle').textContent = `Account: ${currentUser.accNo} | Agent: ${currentUser.agentCode}`;
-                document.getElementById('currentBalanceDisplay').textContent = `₹${currentUser.balance || 0}`;
-                document.getElementById('currentPaymentBalance').textContent = `₹${currentUser.balance || 0}`;
-            }
-        }
-
-        function updateBalanceDisplay() {
-            if (currentUser) {
-                const balance = currentUser.balance || 0;
-                document.getElementById('balanceDisplay').textContent = `Balance: ₹${balance}`;
-                document.getElementById('currentPaymentBalance').textContent = `₹${balance}`;
-                updatePaymentSummary();
-            }
-        }
-
-        // ============================================
-        // REAL-TIME LISTENERS
-        // ============================================
-        function initRealTimeListeners() {
-            if (!currentUser) return;
-
-            Object.keys(realTimeListeners).forEach(key => {
-                if (realTimeListeners[key]) realTimeListeners[key]();
-            });
-            realTimeListeners = {};
-
-            realTimeListeners.balance = database.ref('users/' + currentUser.accNo + '/balance').on('value', (snapshot) => {
-                if (snapshot.exists() && currentUser) {
-                    const newBalance = snapshot.val();
-                    if (newBalance !== currentUser.balance) {
-                        currentUser.balance = newBalance;
-                        updateBalanceDisplay();
-                    }
-                }
-            });
-        }
-
-        // ============================================
-        // LOGOUT
-        // ============================================
-        function logout() {
-            document.getElementById('userDropdown')?.classList.remove('show');
-            
-            Object.keys(realTimeListeners).forEach(key => {
-                if (realTimeListeners[key]) realTimeListeners[key]();
-            });
-            realTimeListeners = {};
-            
-            if (chatMessagesListener) {
-                chatMessagesListener();
-                chatMessagesListener = null;
-            }
-            
-            currentUser = null;
-            currentAdmin = false;
-            currentChatFriend = null;
-            
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('signinPage').style.display = 'flex';
-            clearSignInForm();
-            showToast('Successfully signed out', 'info');
-        }
-
-        // ============================================
-        // ADMIN FUNCTIONS
-        // ============================================
-        function showAdminModal() {
-            showModal('adminModal');
-        }
-
-        function closeAdminModal() {
-            closeModal('adminModal');
-            document.getElementById('pukCode').value = '';
-        }
-
-        function adminLogin() {
-            const pukCode = document.getElementById('pukCode').value;
-            if (pukCode === 'PC15836215') {
-                currentAdmin = true;
-                closeAdminModal();
-                showAdminPanel();
-                loadAllUsers();
-                loadAllOrders();
-                showToast('Admin login successful', 'success');
+            if(inputId === "Admin@playcode") {
+                document.getElementById('adminPassword').value = '';
+                openModal('passwordModal');
             } else {
-                showToast('Invalid PUKCODE!', 'error');
-            }
-        }
-
-        function logoutAdmin() {
-            currentAdmin = false;
-            document.getElementById('adminPanel').style.display = 'none';
-            document.getElementById('signinPage').style.display = 'flex';
-            showToast('Admin session ended', 'info');
-        }
-
-        function showAdminPanel() {
-            document.getElementById('signinPage').style.display = 'none';
-            document.getElementById('adminPanel').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        // ============================================
-        // CHECK BALANCE
-        // ============================================
-        function checkBalance() {
-            showModal('balanceModal');
-            document.getElementById('balanceLoading').style.display = 'flex';
-            document.getElementById('balanceResult').style.display = 'none';
-            
-            setTimeout(() => {
-                document.getElementById('balanceLoading').style.display = 'none';
-                document.getElementById('balanceResult').style.display = 'block';
-                document.getElementById('balanceAmount').textContent = `₹${currentUser.balance || 0}`;
-            }, 2000);
-        }
-
-        // ============================================
-        // ADD BALANCE & PAYMENT
-        // ============================================
-        function addBalance() {
-            showModal('addBalanceModal');
-        }
-
-        function proceedToPayment() {
-            const amountInput = document.getElementById('addAmount');
-            const amount = parseFloat(amountInput.value);
-            
-            if (!amount || amount < 10) {
-                showToast('Please enter a valid amount (minimum ₹10)', 'error');
-                amountInput.focus();
-                return;
-            }
-            
-            paymentAmount = amount;
-            document.getElementById('paymentAmountDisplay').textContent = `₹${amount}`;
-            document.getElementById('newBalanceDisplay').textContent = `₹${(currentUser.balance || 0) + amount}`;
-            
-            closeModal('addBalanceModal');
-            showModal('paymentModal');
-        }
-
-        function completePayment() {
-            const transactionCode = document.getElementById('transactionCode').value.trim();
-            if (!transactionCode) {
-                showToast('Please enter transaction code', 'error');
-                return;
-            }
-
-            const newBalance = (currentUser.balance || 0) + paymentAmount;
-            const transactionId = 'TX' + Date.now();
-            
-            const transactionData = {
-                transactionId: transactionId,
-                accNo: currentUser.accNo,
-                type: 'deposit',
-                amount: paymentAmount,
-                description: `Deposit via agent - Reference: ${transactionCode}`,
-                date: new Date().toISOString(),
-                balanceAfter: newBalance,
-                referenceId: transactionCode
-            };
-
-            const updates = {};
-            updates[`users/${currentUser.accNo}/balance`] = newBalance;
-            updates[`transactions/${transactionId}`] = transactionData;
-            
-            database.ref().update(updates)
-                .then(() => {
-                    currentUser.balance = newBalance;
-                    updateBalanceDisplay();
-                    closeModal('paymentModal');
-                    showToast(`Successfully added ₹${paymentAmount} to your account`, 'success');
-                    document.getElementById('addAmount').value = '';
-                    document.getElementById('transactionCode').value = '';
-                })
-                .catch(error => showToast(error.message, 'error'));
-        }
-
-        // ============================================
-        // ORDER CODE
-        // ============================================
-        function orderCode() {
-            document.getElementById('currentBalanceDisplay').textContent = `₹${currentUser.balance || 0}`;
-            document.getElementById('orderAmount').value = '';
-            document.getElementById('orderPin').value = '';
-            showModal('orderCodeModal');
-        }
-
-        function submitOrder() {
-            const amountInput = document.getElementById('orderAmount');
-            const pinInput = document.getElementById('orderPin');
-            const amount = parseFloat(amountInput.value);
-            const pin = pinInput.value;
-            
-            if (!amount || amount < 10) {
-                showToast('Please enter a valid amount (minimum ₹10)', 'error');
-                amountInput.focus();
-                return;
-            }
-            
-            if (pin !== currentUser.pin) {
-                showToast('Invalid PIN!', 'error');
-                pinInput.focus();
-                return;
-            }
-            
-            if ((currentUser.balance || 0) < amount) {
-                showToast('Insufficient balance!', 'error');
-                return;
-            }
-
-            const orderId = 'ORD' + Date.now();
-            const orderData = {
-                orderId: orderId,
-                accNo: currentUser.accNo,
-                fullName: currentUser.fullName,
-                amount: amount,
-                status: 'Pending',
-                date: new Date().toISOString(),
-                agentCode: currentUser.agentCode
-            };
-
-            const transactionId = 'TX' + Date.now();
-            const transactionData = {
-                transactionId: transactionId,
-                accNo: currentUser.accNo,
-                type: 'order',
-                amount: amount,
-                description: `Order placed for Google Play code - Order ID: ${orderId}`,
-                date: new Date().toISOString(),
-                balanceAfter: (currentUser.balance || 0) - amount,
-                referenceId: orderId
-            };
-
-            const updates = {};
-            updates[`orders/${orderId}`] = orderData;
-            updates[`transactions/${transactionId}`] = transactionData;
-            updates[`users/${currentUser.accNo}/balance`] = (currentUser.balance || 0) - amount;
-
-            database.ref().update(updates)
-                .then(() => {
-                    currentUser.balance = (currentUser.balance || 0) - amount;
-                    updateBalanceDisplay();
-                    closeModal('orderCodeModal');
-                    showToast('Order placed successfully!', 'success');
-                    amountInput.value = '';
-                    pinInput.value = '';
-                })
-                .catch(error => showToast(error.message, 'error'));
-        }
-
-        // ============================================
-        // PAY TO FRIEND (FIXED VERSION)
-        // ============================================
-        function payToFriend() {
-            document.getElementById('friendAccNo').value = '';
-            document.getElementById('transferAmount').value = '';
-            document.getElementById('transferPin').value = '';
-            document.getElementById('friendPaymentInfo').style.display = 'none';
-            document.getElementById('paymentSearchResults').style.display = 'none';
-            document.getElementById('currentPaymentBalance').textContent = `₹${currentUser.balance || 0}`;
-            
-            updatePaymentSummary();
-            showModal('payToFriendModal');
-        }
-
-        function closePayToFriendModal() {
-            closeModal('payToFriendModal');
-        }
-
-        function searchUsersForPayment() {
-            const searchTerm = document.getElementById('friendAccNo').value.trim();
-            const searchResults = document.getElementById('paymentSearchResults');
-            
-            if (searchTerm.length < 2) {
-                searchResults.style.display = 'none';
-                document.getElementById('friendPaymentInfo').style.display = 'none';
-                return;
-            }
-            
-            searchResults.innerHTML = '';
-            
-            database.ref('users').once('value')
-                .then(snapshot => {
-                    const users = [];
-                    snapshot.forEach(childSnapshot => {
-                        const user = childSnapshot.val();
-                        if (user.accNo !== currentUser.accNo) {
-                            users.push(user);
+                if(!inputName) return alert("Please enter your name to connect.");
+                
+                runVerificationSequence(() => {
+                    const caseRef = ref(db, `cases/${inputId}`);
+                    get(caseRef).then(snapshot => {
+                        if(snapshot.exists()) {
+                            currentRole = 'user';
+                            currentCaseId = inputId;
+                            myName = inputName;
+                            initChatUI(snapshot.val().status);
+                        } else {
+                            alert("Case ID not found or invalid.");
+                            showScreen('loginScreen');
                         }
+                    }).catch(err => {
+                        alert("Network error: " + err.message);
+                        showScreen('loginScreen');
                     });
-                    
-                    const filtered = users.filter(user => 
-                        user.accNo.includes(searchTerm) || 
-                        user.fullName.toLowerCase().includes(searchTerm.toLowerCase())
-                    );
-                    
-                    displayPaymentSearchResults(filtered);
-                })
-                .catch(error => showToast('Error searching users: ' + error.message, 'error'));
-        }
-
-        function displayPaymentSearchResults(users) {
-            const searchResults = document.getElementById('paymentSearchResults');
-            
-            if (users.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item"><span class="text-muted">No users found</span></div>';
-                searchResults.style.display = 'block';
-                return;
-            }
-            
-            users.forEach(user => {
-                const resultItem = document.createElement('div');
-                resultItem.className = 'search-result-item';
-                resultItem.innerHTML = `
-                    <div class="user-avatar-small">${user.fullName.charAt(0).toUpperCase()}</div>
-                    <div>
-                        <div class="font-medium">${user.fullName}</div>
-                        <div class="text-xs text-muted">${user.accNo}</div>
-                    </div>
-                `;
-                
-                resultItem.onclick = () => {
-                    selectPaymentFriend(user);
-                };
-                
-                searchResults.appendChild(resultItem);
-            });
-            
-            searchResults.style.display = 'block';
-        }
-
-        function selectPaymentFriend(user) {
-            document.getElementById('friendAccNo').value = user.accNo;
-            document.getElementById('paymentFriendName').textContent = user.fullName;
-            document.getElementById('paymentFriendAcc').textContent = user.accNo;
-            document.getElementById('paymentFriendAvatar').textContent = user.fullName.charAt(0).toUpperCase();
-            document.getElementById('friendPaymentInfo').style.display = 'block';
-            document.getElementById('paymentSearchResults').style.display = 'none';
-            
-            updatePaymentSummary();
-        }
-
-        function updatePaymentSummary() {
-            const amount = parseFloat(document.getElementById('transferAmount').value) || 0;
-            const currentBalance = currentUser?.balance || 0;
-            document.getElementById('paymentAmount').textContent = `₹${amount}`;
-            document.getElementById('balanceAfterPayment').textContent = `₹${Math.max(0, currentBalance - amount)}`;
-        }
-
-        function processTransfer() {
-            const friendAccNo = document.getElementById('friendAccNo').value.trim();
-            const amount = parseFloat(document.getElementById('transferAmount').value);
-            const pin = document.getElementById('transferPin').value;
-            
-            if (!friendAccNo) {
-                showToast('Please enter friend\'s account number', 'error');
-                return;
-            }
-            
-            if (!amount || amount <= 0) {
-                showToast('Please enter a valid amount', 'error');
-                return;
-            }
-            
-            if (friendAccNo === currentUser.accNo) {
-                showToast('You cannot transfer money to yourself', 'error');
-                return;
-            }
-            
-            if (pin !== currentUser.pin) {
-                showToast('Invalid PIN!', 'error');
-                return;
-            }
-            
-            if (amount > (currentUser.balance || 0)) {
-                showToast('Insufficient balance!', 'error');
-                return;
-            }
-            
-            database.ref('users/' + friendAccNo).once('value')
-                .then(snapshot => {
-                    if (!snapshot.exists()) {
-                        showToast('Recipient account not found', 'error');
-                        return Promise.reject('User not found');
-                    }
-                    
-                    const friend = snapshot.val();
-                    const timestamp = Date.now();
-                    const senderTransactionId = 'TX' + timestamp + 'S';
-                    const receiverTransactionId = 'TX' + timestamp + 'R';
-                    
-                    const senderNewBalance = (currentUser.balance || 0) - amount;
-                    const receiverNewBalance = (friend.balance || 0) + amount;
-                    
-                    const senderTransaction = {
-                        transactionId: senderTransactionId,
-                        accNo: currentUser.accNo,
-                        type: 'transfer_out',
-                        amount: amount,
-                        description: `Transfer to ${friend.fullName} (${friendAccNo})`,
-                        date: new Date().toISOString(),
-                        balanceAfter: senderNewBalance,
-                        referenceId: `TRF-${timestamp}`,
-                        recipientAccNo: friendAccNo
-                    };
-                    
-                    const receiverTransaction = {
-                        transactionId: receiverTransactionId,
-                        accNo: friendAccNo,
-                        type: 'transfer_in',
-                        amount: amount,
-                        description: `Received from ${currentUser.fullName} (${currentUser.accNo})`,
-                        date: new Date().toISOString(),
-                        balanceAfter: receiverNewBalance,
-                        referenceId: `TRF-${timestamp}`,
-                        senderAccNo: currentUser.accNo
-                    };
-                    
-                    const updates = {};
-                    updates[`users/${currentUser.accNo}/balance`] = senderNewBalance;
-                    updates[`users/${friendAccNo}/balance`] = receiverNewBalance;
-                    updates[`transactions/${senderTransactionId}`] = senderTransaction;
-                    updates[`transactions/${receiverTransactionId}`] = receiverTransaction;
-                    
-                    return database.ref().update(updates);
-                })
-                .then(() => {
-                    currentUser.balance = (currentUser.balance || 0) - amount;
-                    updateBalanceDisplay();
-                    closePayToFriendModal();
-                    showToast(`Successfully transferred ₹${amount} to ${friendAccNo}`, 'success');
-                })
-                .catch(error => {
-                    if (error !== 'User not found') {
-                        showToast('Error processing transfer: ' + error.message, 'error');
-                    }
                 });
-        }
-
-        // ============================================
-        // CHAT WITH FRIEND (NEW - REPLACED RATING)
-        // ============================================
-        function openChat() {
-            document.getElementById('chatSearch').value = '';
-            document.getElementById('friendsListContainer').innerHTML = '';
-            document.getElementById('chatContainer').style.display = 'none';
-            document.getElementById('chatMessages').innerHTML = '<div class="chat-welcome">Select a friend to start chatting</div>';
-            
-            if (chatMessagesListener) {
-                chatMessagesListener();
-                chatMessagesListener = null;
             }
-            currentChatFriend = null;
-            
-            loadFriendsList();
-            showModal('chatModal');
         }
 
-        function closeChatModal() {
-            closeModal('chatModal');
-            if (chatMessagesListener) {
-                chatMessagesListener();
-                chatMessagesListener = null;
+        window.verifyAdmin = function() {
+            const pass = document.getElementById('adminPassword').value;
+            if(pass === "Som@6215") {
+                window.closeModal('passwordModal');
+                currentRole = 'admin';
+                showScreen('adminScreen');
+                loadAdminDashboard();
+            } else {
+                alert("Incorrect Password!");
             }
-            currentChatFriend = null;
         }
 
-        function closeCurrentChat() {
-            document.getElementById('chatContainer').style.display = 'none';
-            if (chatMessagesListener) {
-                chatMessagesListener();
-                chatMessagesListener = null;
+        function runVerificationSequence(callback) {
+            showScreen('loaderScreen');
+            const textEl = document.getElementById('loaderText');
+            textEl.innerText = 'verify';
+            setTimeout(() => { textEl.innerText = 'please wait'; }, 1000);
+            setTimeout(() => { textEl.innerText = 'Still Trying to verify'; }, 2500);
+            setTimeout(() => { callback(); }, 4000); 
+        }
+
+        // --- Chat System Logic ---
+        function initChatUI(status) {
+            caseStatus = status;
+            showScreen('chatScreen');
+            document.getElementById('chatHeaderSubtitle').innerText = `Case: ${currentCaseId}`;
+            isFirstLoad = true;
+            renderedMsgIds.clear();
+            
+            const actionsDiv = document.getElementById('chatActions');
+            if(currentRole === 'admin') {
+                document.getElementById('chatHeaderTitle').innerText = 'User Chat';
+                actionsDiv.innerHTML = `
+                    <button class="btn btn-danger" style="min-height: 36px; padding: 0 16px; font-size: 13px;" onclick="window.closeCurrentCase()">Close Case</button>
+                    <button class="btn btn-secondary" style="min-height: 36px; padding: 0 16px; font-size: 13px;" onclick="window.leaveChat()">Back</button>
+                `;
+            } else {
+                document.getElementById('chatHeaderTitle').innerText = 'Support Agent';
+                actionsDiv.innerHTML = `<button class="btn btn-secondary" style="min-height: 36px; padding: 0 16px; font-size: 13px;" onclick="window.leaveChat()">Leave</button>`;
             }
-            currentChatFriend = null;
-            loadFriendsList();
-        }
 
-        function loadFriendsList() {
-            database.ref('users').once('value')
-                .then(snapshot => {
-                    friendsList = [];
-                    snapshot.forEach(childSnapshot => {
-                        const user = childSnapshot.val();
-                        if (user.accNo !== currentUser.accNo) {
-                            friendsList.push(user);
-                        }
-                    });
-                    
-                    // Check for unread messages
-                    checkUnreadMessages();
-                })
-                .catch(error => showToast('Error loading friends: ' + error.message, 'error'));
-        }
-
-        function checkUnreadMessages() {
-            if (!currentUser) return;
+            // Sync Messages
+            const msgsRef = ref(db, `messages/${currentCaseId}`);
+            if(messagesListener) messagesListener(); 
             
-            unreadCounts = {};
-            let pendingChecks = friendsList.length;
-            
-            if (pendingChecks === 0) {
-                displayFriendsList();
-                return;
-            }
-            
-            friendsList.forEach(friend => {
-                const chatId = currentUser.accNo < friend.accNo ? 
-                    `${currentUser.accNo}_${friend.accNo}` : 
-                    `${friend.accNo}_${currentUser.accNo}`;
-                
-                database.ref('chats/' + chatId)
-                    .orderByChild('timestamp')
-                    .limitToLast(20)
-                    .once('value', snapshot => {
-                        let unread = 0;
-                        snapshot.forEach(msgSnapshot => {
-                            const msg = msgSnapshot.val();
-                            if (msg.sender === friend.accNo && !msg.read) {
-                                unread++;
-                            }
-                        });
-                        if (unread > 0) {
-                            unreadCounts[friend.accNo] = unread;
-                        }
-                        pendingChecks--;
-                        if (pendingChecks === 0) {
-                            displayFriendsList();
-                        }
-                    });
+            messagesListener = onValue(msgsRef, (snapshot) => {
+                currentMessagesData = snapshot.val() || {};
+                renderMessages();
+                setTimeout(()=>{ isFirstLoad = false; }, 500);
             });
-        }
 
-        function searchFriends() {
-            displayFriendsList();
-        }
-
-        function displayFriendsList() {
-            const searchTerm = document.getElementById('chatSearch').value.toLowerCase();
-            const container = document.getElementById('friendsListContainer');
-            
-            let filtered = friendsList;
-            if (searchTerm) {
-                filtered = friendsList.filter(friend => 
-                    friend.fullName.toLowerCase().includes(searchTerm) || 
-                    friend.accNo.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (filtered.length === 0) {
-                container.innerHTML = '<div class="chat-warning" style="text-align: center; padding: 20px; color: var(--text-muted);">No friends found</div>';
-                return;
-            }
-            
-            container.innerHTML = '';
-            filtered.forEach(friend => {
-                const friendItem = document.createElement('div');
-                friendItem.className = 'friend-item';
-                if (currentChatFriend?.accNo === friend.accNo) {
-                    friendItem.classList.add('selected');
+            // Watch for case closure
+            onValue(ref(db, `cases/${currentCaseId}`), (snapshot) => {
+                if(snapshot.exists() && snapshot.val().status === 'closed') {
+                    caseStatus = 'closed';
+                    renderMessages(); // Forces UI lock
                 }
-                
-                const unreadCount = unreadCounts[friend.accNo] || 0;
-                
-                friendItem.innerHTML = `
-                    <div class="friend-avatar">${friend.fullName.charAt(0).toUpperCase()}</div>
-                    <div class="friend-info">
-                        <div class="friend-name">${friend.fullName}</div>
-                        <div class="friend-acc">${friend.accNo}</div>
-                    </div>
-                    ${unreadCount > 0 ? `<div class="unread-badge">${unreadCount}</div>` : ''}
-                `;
-                
-                friendItem.onclick = () => selectChatFriend(friend);
-                
-                container.appendChild(friendItem);
             });
         }
 
-        function selectChatFriend(friend) {
-            if (currentChatFriend?.accNo === friend.accNo) return;
+        function renderMessages() {
+            clearTimeout(typingTimeout);
+            const msgBox = document.getElementById('chatMessages');
             
-            if (chatMessagesListener) {
-                chatMessagesListener();
-                chatMessagesListener = null;
-            }
-            
-            currentChatFriend = friend;
-            document.getElementById('currentChatFriendName').textContent = friend.fullName;
-            document.getElementById('chatContainer').style.display = 'block';
-            
-            // Mark messages as read
-            markMessagesAsRead(friend.accNo);
-            
-            loadChatHistory(friend.accNo);
-            displayFriendsList();
-        }
+            // Remember scroll position
+            const isScrolledToBottom = msgBox.scrollHeight - msgBox.scrollTop <= msgBox.clientHeight + 50;
 
-        function markMessagesAsRead(friendAccNo) {
-            const chatId = currentUser.accNo < friendAccNo ? 
-                `${currentUser.accNo}_${friendAccNo}` : 
-                `${friendAccNo}_${currentUser.accNo}`;
-            
-            database.ref('chats/' + chatId)
-                .orderByChild('sender')
-                .equalTo(friendAccNo)
-                .once('value', snapshot => {
-                    const updates = {};
-                    snapshot.forEach(childSnapshot => {
-                        const msg = childSnapshot.val();
-                        if (!msg.read) {
-                            updates[`chats/${chatId}/${childSnapshot.key}/read`] = true;
-                        }
-                    });
-                    if (Object.keys(updates).length > 0) {
-                        database.ref().update(updates);
+            let html = '<div class="system-msg">Chat connected securely.</div>';
+            if(caseStatus === 'closed') html += '<div class="system-msg" style="color:var(--md-sys-color-error)">This case has been closed by support.</div>';
+
+            let hasTyping = false;
+            let earliestFuture = Infinity;
+            let typingAgentName = "Agent";
+            let unreadUpdates = {};
+            const now = Date.now();
+
+            // Process Messages
+            if(currentMessagesData) {
+                const keys = Object.keys(currentMessagesData).sort((a,b) => currentMessagesData[a].timestamp - currentMessagesData[b].timestamp);
+                
+                keys.forEach(key => {
+                    const m = currentMessagesData[key];
+                    const isMe = m.senderRole === currentRole;
+
+                    // 3 Second Virtualization Logic (Admin -> User only)
+                    if (!isMe && m.hiddenUntil && m.hiddenUntil > now) {
+                        hasTyping = true;
+                        typingAgentName = m.senderName;
+                        if (m.hiddenUntil < earliestFuture) earliestFuture = m.hiddenUntil;
+                        return; // Skip rendering this message bubble for now
                     }
+
+                    // Mark as read if the other person sent it and it's visible now
+                    if (!isMe && !m.read) {
+                        m.read = true;
+                        unreadUpdates[`messages/${currentCaseId}/${key}/read`] = true;
+                    }
+
+                    // Trigger sound for new messages
+                    if (!renderedMsgIds.has(key)) {
+                        renderedMsgIds.add(key);
+                        if (!isFirstLoad) playSound(isMe ? 'send' : 'recv');
+                    }
+
+                    // Format message
+                    const timeStr = new Date(m.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    // Tick logic for the sender
+                    let tickHtml = '';
+                    if (isMe) {
+                        tickHtml = `<span class="material-icons-round tick ${m.read ? 'tick-read' : ''}">${m.read ? 'done_all' : 'check'}</span>`;
+                    }
+
+                    html += `
+                        <div class="msg ${isMe ? 'msg-user' : 'msg-admin'}">
+                            <div class="msg-sender-name">${isMe ? 'You' : m.senderName}</div>
+                            <div>${m.text}</div>
+                            <div class="msg-time">${timeStr} ${tickHtml}</div>
+                        </div>
+                    `;
                 });
+            }
+
+            // Append Typing Indicator if needed
+            if (hasTyping) {
+                const initial = typingAgentName.charAt(0).toUpperCase();
+                html += `
+                    <div class="typing-container">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-spinner"></div>
+                            <div>${initial}</div>
+                        </div>
+                        <div class="typing-text">${typingAgentName} is typing...</div>
+                    </div>
+                `;
+            }
+
+            msgBox.innerHTML = html;
+
+            // Lock input if closed
+            const inputArea = document.getElementById('chatInputArea');
+            if(caseStatus === 'closed') {
+                document.getElementById('chatStatusDot').style.background = 'var(--md-sys-color-outline)';
+                inputArea.style.display = 'none';
+            } else {
+                document.getElementById('chatStatusDot').style.background = 'var(--md-sys-color-success)';
+                inputArea.style.display = 'flex';
+            }
+
+            // Auto-scroll
+            if (isScrolledToBottom || hasTyping || !isFirstLoad) {
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }
+
+            // Push read receipts to DB
+            if (Object.keys(unreadUpdates).length > 0) {
+                update(ref(db), unreadUpdates);
+            }
+
+            // Re-render when the hidden timer expires
+            if (hasTyping) {
+                typingTimeout = setTimeout(renderMessages, earliestFuture - Date.now() + 100);
+            }
         }
 
-        function loadChatHistory(friendAccNo) {
-            if (!currentUser || !friendAccNo) return;
-            
-            const chatId = currentUser.accNo < friendAccNo ? 
-                `${currentUser.accNo}_${friendAccNo}` : 
-                `${friendAccNo}_${currentUser.accNo}`;
-            
-            const messagesDiv = document.getElementById('chatMessages');
-            messagesDiv.innerHTML = '<div class="chat-loading">Loading messages...</div>';
-            
-            if (chatMessagesListener) {
-                chatMessagesListener();
-            }
-            
-            chatMessagesListener = database.ref('chats/' + chatId)
-                .orderByChild('timestamp')
-                .limitToLast(50)
-                .on('value', snapshot => {
-                    messagesDiv.innerHTML = '';
-                    
-                    if (!snapshot.exists()) {
-                        messagesDiv.innerHTML = '<div class="chat-welcome">No messages yet. Start chatting!</div>';
-                        return;
-                    }
-                    
-                    let hasMessages = false;
-                    snapshot.forEach(child => {
-                        hasMessages = true;
-                        const msg = child.val();
-                        const messageDiv = document.createElement('div');
-                        messageDiv.className = 'chat-message ' + (msg.sender === currentUser.accNo ? 'sent' : 'received');
-                        
-                        const time = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        
-                        messageDiv.innerHTML = `
-                            <div>${msg.text}</div>
-                            <div class="meta">
-                                <span>${time}</span>
-                                ${msg.sender === currentUser.accNo ? '<span>✓✓</span>' : ''}
-                            </div>
-                        `;
-                        
-                        messagesDiv.appendChild(messageDiv);
-                    });
-                    
-                    if (!hasMessages) {
-                        messagesDiv.innerHTML = '<div class="chat-welcome">No messages yet. Start chatting!</div>';
-                    }
-                    
-                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                });
+        window.checkEnter = function(e) {
+            if(e.key === 'Enter') window.sendMessage();
         }
 
-        function sendChatMessage() {
-            if (!currentUser || !currentChatFriend) {
-                showToast('Please select a friend first', 'error');
-                return;
-            }
+        window.sendMessage = function() {
+            if(caseStatus === 'closed') return;
             
-            const input = document.getElementById('chatInput');
+            const input = document.getElementById('msgInput');
             const text = input.value.trim();
+            if(!text) return;
+
+            input.value = '';
             
-            if (!text) return;
-            
-            const chatId = currentUser.accNo < currentChatFriend.accNo ? 
-                `${currentUser.accNo}_${currentChatFriend.accNo}` : 
-                `${currentChatFriend.accNo}_${currentUser.accNo}`;
-            
-            const messageId = 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
-            
-            database.ref('chats/' + chatId + '/' + messageId).set({
-                sender: currentUser.accNo,
+            const msgData = {
+                senderRole: currentRole,
+                senderName: myName,
                 text: text,
                 timestamp: Date.now(),
                 read: false
-            })
-            .then(() => {
-                input.value = '';
-            })
-            .catch(error => showToast('Error sending message: ' + error.message, 'error'));
+            };
+
+            // Inject 3s delay logic for admin messages sent to user
+            if (currentRole === 'admin') {
+                msgData.hiddenUntil = Date.now() + 3000;
+            }
+            
+            push(ref(db, `messages/${currentCaseId}`), msgData);
         }
 
-        // ============================================
-        // TRANSACTION HISTORY
-        // ============================================
-        function loadTransactionHistory() {
-            if (!currentUser) return;
-            
-            database.ref('transactions').orderByChild('accNo').equalTo(currentUser.accNo).once('value')
-                .then(snapshot => {
-                    const transactionsList = document.getElementById('transactionsList');
-                    transactionsList.innerHTML = '';
-                    
-                    if (!snapshot.exists()) {
-                        transactionsList.innerHTML = '<div class="no-transactions" style="text-align: center; padding: 40px; color: var(--text-muted);">No transactions found</div>';
-                        return;
-                    }
-                    
-                    let transactions = [];
-                    snapshot.forEach(childSnapshot => {
-                        transactions.push(childSnapshot.val());
-                    });
-                    
-                    transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    
-                    const filtered = transactionFilter === 'all' ? transactions : transactions.filter(t => t.type === transactionFilter);
-                    
-                    if (filtered.length === 0) {
-                        transactionsList.innerHTML = `<div class="no-transactions" style="text-align: center; padding: 40px; color: var(--text-muted);">No ${transactionFilter} transactions found</div>`;
-                        return;
-                    }
-                    
-                    filtered.forEach(transaction => {
-                        const date = new Date(transaction.date).toLocaleString();
-                        let typeLabel = transaction.type === 'deposit' ? 'Deposit' : 
-                                      transaction.type === 'withdrawal' ? 'Withdrawal' : 
-                                      transaction.type === 'transfer_in' ? 'Received' : 
-                                      transaction.type === 'transfer_out' ? 'Sent' : 'Order';
-                        
-                        const isNegative = transaction.type === 'withdrawal' || 
-                                          transaction.type === 'transfer_out' || 
-                                          transaction.type === 'order';
-                        
-                        const amountDisplay = `${isNegative ? '-' : '+'}₹${Math.abs(transaction.amount)}`;
-                        
-                        const item = document.createElement('div');
-                        item.className = 'transaction-item';
-                        item.innerHTML = `
-                            <div class="transaction-header">
-                                <div class="transaction-type">
-                                    <span class="material-icons-round" style="font-size: 14px;">${transaction.type === 'deposit' ? 'add_circle' : transaction.type === 'withdrawal' ? 'remove_circle' : transaction.type === 'transfer_in' ? 'call_received' : transaction.type === 'transfer_out' ? 'call_made' : 'shopping_cart'}</span>
-                                    <span>${typeLabel}</span>
+        window.leaveChat = function() {
+            if(messagesListener) messagesListener(); 
+            currentCaseId = null;
+            if(currentRole === 'admin') {
+                showScreen('adminScreen');
+            } else {
+                currentRole = null;
+                document.getElementById('loginId').value = '';
+                document.getElementById('loginName').value = '';
+                showScreen('loginScreen');
+            }
+        }
+
+        window.closeCurrentCase = function() {
+            if(!confirm("Are you sure you want to close this case?")) return;
+            const caseRef = ref(db, `cases/${currentCaseId}`);
+            update(caseRef, { status: 'closed' }).then(() => {
+                alert("Case Closed");
+                window.leaveChat();
+            });
+        }
+
+        // --- Admin Dashboard Logic ---
+        function loadAdminDashboard() {
+            const casesRef = ref(db, 'cases');
+            onValue(casesRef, (snapshot) => {
+                const activeBox = document.getElementById('activeCasesGrid');
+                const closedBox = document.getElementById('closedCasesGrid');
+                activeBox.innerHTML = '';
+                closedBox.innerHTML = '';
+                
+                if(snapshot.exists()) {
+                    const data = snapshot.val();
+                    Object.keys(data).forEach(id => {
+                        const c = data[id];
+                        const html = `
+                            <div class="case-card" onclick="window.preFillJoin('${id}')">
+                                <div class="case-info">
+                                    <h3>${id}</h3>
+                                    <div style="font-size:12px; color:var(--md-sys-color-outline)">Created: ${new Date(c.createdAt).toLocaleDateString()}</div>
                                 </div>
-                                <div class="transaction-amount ${isNegative ? 'text-error' : 'text-success'}">${amountDisplay}</div>
-                            </div>
-                            <p style="font-size: 0.875rem; margin-bottom: 8px; color: var(--text-premium);">${transaction.description || 'Transaction'}</p>
-                            <div class="transaction-details">
-                                <span>${date}</span>
-                                ${transaction.balanceAfter !== undefined ? `<span>Balance: ₹${transaction.balanceAfter}</span>` : ''}
-                                ${transaction.referenceId ? `<span class="text-muted text-xs">Ref: ${transaction.referenceId}</span>` : ''}
+                                <div class="badge ${c.status === 'active' ? 'badge-active' : 'badge-closed'}">${c.status.toUpperCase()}</div>
                             </div>
                         `;
-                        transactionsList.appendChild(item);
+                        if(c.status === 'active') activeBox.innerHTML += html;
+                        else closedBox.innerHTML += html;
                     });
-                })
-                .catch(error => showToast('Error loading transactions: ' + error.message, 'error'));
-        }
-
-        function filterTransactions(type) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            transactionFilter = type;
-            loadTransactionHistory();
-        }
-
-        // ============================================
-        // USER ORDERS
-        // ============================================
-        function loadUserOrders() {
-            if (!currentUser) return;
-            
-            database.ref('orders').orderByChild('accNo').equalTo(currentUser.accNo).once('value')
-                .then(snapshot => {
-                    const ordersTable = document.getElementById('userOrdersTable');
-                    ordersTable.innerHTML = '';
-                    
-                    if (!snapshot.exists()) {
-                        ordersTable.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">No orders found</td></tr>';
-                        return;
-                    }
-                    
-                    snapshot.forEach(childSnapshot => {
-                        const order = childSnapshot.val();
-                        const date = new Date(order.date).toLocaleString();
-                        const statusClass = order.status === 'Completed' ? 'status-completed' : 
-                                          order.status === 'Cancelled' ? 'status-cancelled' : 'status-pending';
-                        
-                        const redeemButton = order.status === 'Completed' && order.redeemCode ? 
-                            `<button class="action-btn action-btn-success" onclick="showRedeemCode('${order.redeemCode}')">Show Code</button>` : '';
-                        
-                        ordersTable.innerHTML += `
-                            <tr>
-                                <td class="font-medium">${order.orderId}</td>
-                                <td class="font-semibold">₹${order.amount}</td>
-                                <td class="text-muted text-sm">${date}</td>
-                                <td><span class="status-badge ${statusClass}">${order.status}</span></td>
-                                <td>${redeemButton}</td>
-                            </tr>
-                        `;
-                    });
-                })
-                .catch(error => showToast('Error loading orders: ' + error.message, 'error'));
-        }
-
-        // ============================================
-        // REDEEM CODE
-        // ============================================
-        function showRedeemCode(code) {
-            currentRedeemCode = code;
-            document.getElementById('redeemCodeValue').textContent = code;
-            showModal('redeemCodeModal');
-        }
-
-        function copyRedeemCode() {
-            if (!currentRedeemCode) return;
-            
-            navigator.clipboard.writeText(currentRedeemCode)
-                .then(() => showToast('Redeem code copied to clipboard!', 'success'))
-                .catch(() => showToast('Failed to copy code', 'error'));
-        }
-
-        // ============================================
-        // ADMIN FUNCTIONS
-        // ============================================
-        function loadAllUsers() {
-            database.ref('users').once('value')
-                .then(snapshot => {
-                    const usersTable = document.getElementById('usersTable');
-                    usersTable.innerHTML = '';
-                    
-                    if (!snapshot.exists()) {
-                        usersTable.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">No users found</td></tr>';
-                        return;
-                    }
-                    
-                    snapshot.forEach(childSnapshot => {
-                        const user = childSnapshot.val();
-                        const date = user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A';
-                        usersTable.innerHTML += `
-                            <tr>
-                                <td class="font-medium">${user.accNo}</td>
-                                <td>${user.fullName}</td>
-                                <td class="font-semibold text-success">₹${user.balance || 0}</td>
-                                <td><span class="status-badge">${user.agentCode}</span></td>
-                                <td class="text-muted text-sm">${date}</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn action-btn-primary" onclick="showAdminBalanceModal('${user.accNo}')">Balance</button>
-                                        <button class="action-btn action-btn-danger" onclick="deleteUser('${user.accNo}')">Delete</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                })
-                .catch(error => showToast('Error loading users: ' + error.message, 'error'));
-        }
-
-        function loadAllOrders() {
-            database.ref('orders').once('value')
-                .then(snapshot => {
-                    const ordersTable = document.getElementById('allOrdersTable');
-                    ordersTable.innerHTML = '';
-                    
-                    if (!snapshot.exists()) {
-                        ordersTable.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">No orders found</td></tr>';
-                        return;
-                    }
-                    
-                    snapshot.forEach(childSnapshot => {
-                        const order = childSnapshot.val();
-                        const date = new Date(order.date).toLocaleString();
-                        const statusClass = order.status === 'Completed' ? 'status-completed' : 
-                                          order.status === 'Cancelled' ? 'status-cancelled' : 'status-pending';
-                        
-                        ordersTable.innerHTML += `
-                            <tr>
-                                <td class="font-medium">${order.orderId}</td>
-                                <td>${order.accNo}</td>
-                                <td class="font-semibold">₹${order.amount}</td>
-                                <td class="text-muted text-sm">${date}</td>
-                                <td><span class="status-badge ${statusClass}">${order.status}</span></td>
-                                <td>
-                                    <button class="action-btn action-btn-success" onclick="showOrderDetails('${order.orderId}')">Manage</button>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                })
-                .catch(error => showToast('Error loading orders: ' + error.message, 'error'));
-        }
-
-        function showAdminBalanceModal(accNo) {
-            selectedUserId = accNo;
-            
-            database.ref('users/' + accNo).once('value')
-                .then(snapshot => {
-                    const user = snapshot.val();
-                    document.getElementById('adminUserInfo').textContent = `User: ${user.fullName} (${accNo})`;
-                    document.getElementById('adminCurrentBalance').textContent = `Current Balance: ₹${user.balance || 0}`;
-                    document.getElementById('adminBalanceAmount').value = '';
-                    showModal('adminBalanceModal');
-                });
-        }
-
-        function updateUserBalance() {
-            const action = document.getElementById('balanceAction').value;
-            const amount = parseFloat(document.getElementById('adminBalanceAmount').value);
-            
-            if (!amount || amount <= 0) {
-                showToast('Please enter a valid amount', 'error');
-                return;
-            }
-            
-            database.ref('users/' + selectedUserId).once('value')
-                .then(snapshot => {
-                    const user = snapshot.val();
-                    let newBalance = user.balance || 0;
-                    
-                    if (action === 'add') {
-                        newBalance += amount;
-                    } else {
-                        newBalance = Math.max(0, newBalance - amount);
-                    }
-                    
-                    const transactionId = 'TX' + Date.now();
-                    const transactionData = {
-                        transactionId: transactionId,
-                        accNo: selectedUserId,
-                        type: action === 'add' ? 'deposit' : 'withdrawal',
-                        amount: amount,
-                        description: `Admin ${action === 'add' ? 'added' : 'deducted'} balance`,
-                        date: new Date().toISOString(),
-                        balanceAfter: newBalance,
-                        referenceId: `ADMIN-${Date.now()}`
-                    };
-                    
-                    const updates = {};
-                    updates[`users/${selectedUserId}/balance`] = newBalance;
-                    updates[`transactions/${transactionId}`] = transactionData;
-                    
-                    return database.ref().update(updates);
-                })
-                .then(() => {
-                    loadAllUsers();
-                    closeModal('adminBalanceModal');
-                    showToast('Balance updated successfully!', 'success');
-                    document.getElementById('adminBalanceAmount').value = '';
-                })
-                .catch(error => showToast(error.message, 'error'));
-        }
-
-        function deleteUser(accNo) {
-            if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
-                database.ref('users/' + accNo).remove()
-                    .then(() => {
-                        loadAllUsers();
-                        showToast('User deleted successfully!', 'success');
-                    })
-                    .catch(error => showToast(error.message, 'error'));
-            }
-        }
-
-        function showOrderDetails(orderId) {
-            selectedOrderId = orderId;
-            
-            database.ref('orders/' + orderId).once('value')
-                .then(snapshot => {
-                    const order = snapshot.val();
-                    document.getElementById('orderInfo').textContent = `Order: ${orderId} - ₹${order.amount}`;
-                    document.getElementById('orderUserInfo').textContent = `User: ${order.fullName} (${order.accNo})`;
-                    document.getElementById('redeemCode').value = order.redeemCode || '';
-                    showModal('orderDetailsModal');
-                });
-        }
-
-        function completeOrder() {
-            const redeemCode = document.getElementById('redeemCode').value.trim();
-            if (!redeemCode) {
-                showToast('Please enter redeem code', 'error');
-                return;
-            }
-            
-            database.ref('orders/' + selectedOrderId).update({
-                status: 'Completed',
-                redeemCode: redeemCode,
-                completedAt: new Date().toISOString()
-            })
-            .then(() => {
-                loadAllOrders();
-                closeModal('orderDetailsModal');
-                showToast('Order completed successfully!', 'success');
-                document.getElementById('redeemCode').value = '';
-            })
-            .catch(error => showToast(error.message, 'error'));
-        }
-
-        function cancelOrder() {
-            if (!confirm('Are you sure you want to cancel this order? The amount will be refunded to the user.')) return;
-            
-            database.ref('orders/' + selectedOrderId).once('value')
-                .then(snapshot => {
-                    const order = snapshot.val();
-                    
-                    return database.ref('users/' + order.accNo).once('value')
-                        .then(userSnapshot => {
-                            const user = userSnapshot.val();
-                            const newBalance = (user.balance || 0) + order.amount;
-                            
-                            const transactionId = 'TX' + Date.now();
-                            const transactionData = {
-                                transactionId: transactionId,
-                                accNo: order.accNo,
-                                type: 'deposit',
-                                amount: order.amount,
-                                description: `Order cancellation refund - Order ID: ${selectedOrderId}`,
-                                date: new Date().toISOString(),
-                                balanceAfter: newBalance,
-                                referenceId: selectedOrderId
-                            };
-                            
-                            const updates = {};
-                            updates[`orders/${selectedOrderId}/status`] = 'Cancelled';
-                            updates[`orders/${selectedOrderId}/cancelledAt`] = new Date().toISOString();
-                            updates[`users/${order.accNo}/balance`] = newBalance;
-                            updates[`transactions/${transactionId}`] = transactionData;
-                            
-                            return database.ref().update(updates);
-                        });
-                })
-                .then(() => {
-                    loadAllOrders();
-                    closeModal('orderDetailsModal');
-                    showToast('Order cancelled and amount refunded!', 'success');
-                })
-                .catch(error => showToast(error.message, 'error'));
-        }
-
-        // ============================================
-        // MODAL UTILITIES
-        // ============================================
-        function showModal(modalId) {
-            document.getElementById(modalId).classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('show');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('signinForm')?.addEventListener('submit', e => {
-                e.preventDefault();
-                startSignInSequence();
+                }
+                
+                if(activeBox.innerHTML === '') activeBox.innerHTML = '<div style="color:var(--md-sys-color-outline)">No active cases.</div>';
+                if(closedBox.innerHTML === '') closedBox.innerHTML = '<div style="color:var(--md-sys-color-outline)">No closed cases.</div>';
             });
+        }
 
-            document.getElementById('signupForm')?.addEventListener('submit', e => {
-                e.preventDefault();
-                startSignUpSequence();
-            });
-
-            document.getElementById('transferAmount')?.addEventListener('input', updatePaymentSummary);
-            document.getElementById('directSignInKey')?.addEventListener('keypress', e => {
-                if (e.key === 'Enter') processDirectSignIn();
-            });
-            document.getElementById('orderAmount')?.addEventListener('input', function() {
-                const amount = parseFloat(this.value) || 0;
-                const balance = currentUser?.balance || 0;
-                document.getElementById('balanceAfterDisplay').textContent = `₹${Math.max(0, balance - amount)}`;
-            });
-        });
-
-        document.addEventListener('click', function(event) {
-            const dropdown = document.getElementById('userDropdown');
-            const avatar = document.querySelector('.user-avatar');
+        window.generateNewCase = function() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let randomStr = '';
+            for(let i=0; i<4; i++) randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
             
-            if (dropdown?.classList.contains('show') && !dropdown.contains(event.target) && !avatar?.contains(event.target)) {
-                dropdown.classList.remove('show');
-            }
+            const newId = `CRX-PLXX55-${randomStr}`;
             
-            const paymentResults = document.getElementById('paymentSearchResults');
-            if (paymentResults?.style.display !== 'none' && !event.target.closest('.user-search')) {
-                paymentResults.style.display = 'none';
-            }
-        });
+            set(ref(db, `cases/${newId}`), {
+                status: 'active',
+                createdAt: Date.now()
+            }).then(() => {
+                alert(`New Case Generated: ${newId}\nShare this ID with the user.`);
+            });
+        }
+
+        window.showJoinModal = function() {
+            document.getElementById('joinCaseId').value = '';
+            document.getElementById('adminDisplayName').value = 'Agent Som';
+            openModal('joinModal');
+        }
+
+        window.preFillJoin = function(id) {
+            document.getElementById('joinCaseId').value = id;
+            document.getElementById('adminDisplayName').value = 'Agent Som';
+            openModal('joinModal');
+        }
+
+        window.executeJoinCase = function() {
+            const cId = document.getElementById('joinCaseId').value.trim();
+            const aName = document.getElementById('adminDisplayName').value.trim();
+            if(!cId || !aName) return alert("Fill all fields");
+
+            get(ref(db, `cases/${cId}`)).then(snapshot => {
+                if(snapshot.exists()) {
+                    window.closeModal('joinModal');
+                    currentCaseId = cId;
+                    myName = aName;
+                    initChatUI(snapshot.val().status);
+                } else {
+                    alert("Case ID does not exist.");
+                }
+            });
+        }
+
+        window.logout = function() {
+            currentRole = null;
+            document.getElementById('loginId').value = '';
+            showScreen('loginScreen');
+        }
+
     </script>
-    <!-- ========== TOTAL FILE SIZE ~145KB ========== -->
-    <!-- ========== GOLDEN THEME · PREMIUM FONTS · SEPARATE PAY & CHAT ========== -->
 </body>
 </html>
